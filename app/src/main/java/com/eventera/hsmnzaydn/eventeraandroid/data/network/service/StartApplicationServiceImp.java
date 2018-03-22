@@ -4,12 +4,12 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiClient;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiInterface;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.NetworkError;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
+import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 
 import javax.inject.Inject;
 
-import retrofit2.Call;
+import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
@@ -19,11 +19,11 @@ import rx.schedulers.Schedulers;
  * Created by hsmnzaydn on 20.03.2018.
  */
 
-public class StartApplicationImp implements StartApplication{
+public class StartApplicationServiceImp implements StartApplicationService {
     private ApiInterface apiService;
 
     @Inject
-    public StartApplicationImp() {
+    public StartApplicationServiceImp() {
         apiService = ApiClient.getClient().create(ApiInterface.class);
     }
 
@@ -43,10 +43,10 @@ public class StartApplicationImp implements StartApplication{
                     public void onCompleted() {
 
                     }
-
                     @Override
                     public void onError(Throwable e) {
-                        callback.onError(new NetworkError(e));
+                        NetworkError networkError = new NetworkError(e);
+                        networkError.response(callback);
 
                     }
 

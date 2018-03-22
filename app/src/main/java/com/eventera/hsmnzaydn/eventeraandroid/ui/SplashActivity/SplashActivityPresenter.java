@@ -4,14 +4,11 @@ import android.app.Activity;
 import android.util.Log;
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
-import com.eventera.hsmnzaydn.eventeraandroid.data.network.NetworkError;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.BasePresenter;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Constant;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
-
-import retrofit2.adapter.rxjava.HttpException;
 
 
 /**
@@ -23,41 +20,44 @@ public class SplashActivityPresenter<V extends SplashActivityMvpView> extends Ba
     Activity activity;
 
 
-
     DataManager dataManager;
 
-    public SplashActivityPresenter(Activity activity,DataManager dataManager) {
-        this.activity=activity;
-        this.dataManager=dataManager;
+    public SplashActivityPresenter(Activity activity, DataManager dataManager) {
+        super((V) activity);
+        this.activity = activity;
+
+        this.dataManager = dataManager;
 
     }
 
     @Override
     public void startApplication() {
         dataManager.saveUdid(Utils.getUdid(activity));
-        Constant.UDID=dataManager.getUdid();
-        if(dataManager.getAuthorization() != null){
-            Constant.AUTHORIZATION=dataManager.getAuthorization();
+        Constant.UDID = dataManager.getUdid();
+        if (dataManager.getAuthorization() != null) {
+            Constant.AUTHORIZATION = dataManager.getAuthorization();
         }
 
         getMvpView().showLoading();
-            dataManager.startApplication(new ServiceCallback<CommonResponse>() {
-                @Override
-                public void onResponse(CommonResponse response) {
-                    Log.d("veri","veri");
-                    getMvpView().dissmisLoading();
+        dataManager.startApplication(new ServiceCallback<CommonResponse>() {
+            @Override
+            public void onResponse(CommonResponse response) {
+                getMvpView().dissmisLoading();
+                if(response.getCode() == Constant.UNREGISTER_CODE){
+                    getMvpView().openRegisteractivity();
                 }
+                getMvpView().killActivity();
+            }
 
-                @Override
-                public void onError(NetworkError errorMessage) {
-                    int code= ((HttpException) errorMessage.getError()).code();
+            @Override
+            public void onError(String message) {
+                getMvpView().showError(message);
+                getMvpView().dissmisLoading();
+            }
 
-                    getMvpView().showError(errorMessage.getAppErrorMessage());
-                    getMvpView().dissmisLoading();
-                }
-            });
+
+        });
     }
-
 
 
 }

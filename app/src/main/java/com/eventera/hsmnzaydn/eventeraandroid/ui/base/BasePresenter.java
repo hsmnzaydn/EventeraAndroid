@@ -9,7 +9,9 @@ package com.eventera.hsmnzaydn.eventeraandroid.ui.base;
 public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
 
-
+    public BasePresenter(V mvpView) {
+        this.mvpView = mvpView;
+    }
 
     private V mvpView;
 

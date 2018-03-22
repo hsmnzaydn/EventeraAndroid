@@ -8,8 +8,10 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.AppDataManager;
 import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiHelper;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.AppApiHelper;
-import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplication;
-import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplicationImp;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.RegisterService;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.RegisterServiceImp;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplicationService;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplicationServiceImp;
 import com.eventera.hsmnzaydn.eventeraandroid.data.pref.AppPrefHelper;
 import com.eventera.hsmnzaydn.eventeraandroid.data.pref.PrefHelper;
 
@@ -53,14 +55,14 @@ public class DaggerModule {
 
     @Provides
     @Singleton
-    ApiHelper provideApiHelper(StartApplication startApplication){
-        return new AppApiHelper(startApplication);
+    ApiHelper provideApiHelper(StartApplicationService startApplicationService){
+        return new AppApiHelper(startApplicationService);
     }
 
     @Provides
     @Singleton
-    StartApplication provideStartApplication(){
-        return new StartApplicationImp();
+    StartApplicationService provideStartApplication(){
+        return new StartApplicationServiceImp();
     }
 
     @Provides
@@ -69,5 +71,10 @@ public class DaggerModule {
         return new AppPrefHelper(context);
     }
 
+    @Provides
+    @Singleton
+    RegisterService provideRegisterService(){
+        return new RegisterServiceImp();
+    }
 
 }

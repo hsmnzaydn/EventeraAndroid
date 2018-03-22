@@ -3,6 +3,7 @@ package com.eventera.hsmnzaydn.eventeraandroid.data.network;
 import android.text.TextUtils;
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Constant;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 import com.google.gson.Gson;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import retrofit2.Response;
 import retrofit2.adapter.rxjava.HttpException;
 
 import static java.net.HttpURLConnection.HTTP_UNAUTHORIZED;
@@ -30,36 +32,29 @@ public class NetworkError extends Throwable {
         return error.getMessage();
     }
 
-    public boolean isAuthFailure() {
-        return error instanceof HttpException &&
-                ((HttpException) error).code() == HTTP_UNAUTHORIZED;
-    }
 
-    public boolean isResponseNull() {
-        return error instanceof HttpException && ((HttpException) error).response() == null;
-    }
+    public void response(ServiceCallback serviceCallback) {
+        if (this.error instanceof IOException) {
+            serviceCallback.onError(NETWORK_ERROR_MESSAGE);
+        }
+        else if (!(this.error instanceof HttpException)) {
+            serviceCallback.onError(DEFAULT_ERROR_MESSAGE);
+        }
+        else {
+            retrofit2.Response<?> response = ((HttpException) this.error).response();
+            if (response != null) {
+                if (!response.isSuccessful()) {
+                    serviceCallback.onResponse(Utils.errorHandler(response));
+                } else {
+                    serviceCallback.onError(DEFAULT_ERROR_MESSAGE);
+                }
+            }
 
-    public String getAppErrorMessage() {
-        if (this.error instanceof IOException) return NETWORK_ERROR_MESSAGE;
-        if (!(this.error instanceof HttpException)) return DEFAULT_ERROR_MESSAGE;
-
-        retrofit2.Response<?> response = ((HttpException) this.error).response();
-        if(!response.isSuccessful()){
-          return   Utils.errorHandler(response).getMessage();
         }
 
-        return DEFAULT_ERROR_MESSAGE;
-    }
 
-    protected Integer getJsonStringFromResponse(final retrofit2.Response<?> response) {
 
-        try {
-            String jsonString = response.errorBody().string();
-            CommonResponse errorResponse = new Gson().fromJson(jsonString, CommonResponse.class);
-            return errorResponse.getCode();
-        } catch (Exception e) {
-            return null;
-        }
+
     }
 
     public Throwable getError() {

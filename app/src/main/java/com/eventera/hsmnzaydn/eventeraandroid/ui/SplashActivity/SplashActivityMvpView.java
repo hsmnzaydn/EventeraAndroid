@@ -8,5 +8,6 @@ import com.eventera.hsmnzaydn.eventeraandroid.ui.base.MvpView;
 
 public interface SplashActivityMvpView extends MvpView {
 
-
+    void openMainActivity();
+    void openRegisteractivity();
 }
