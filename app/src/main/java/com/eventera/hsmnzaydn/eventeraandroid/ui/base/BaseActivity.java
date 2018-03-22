@@ -1,5 +1,6 @@
 package com.eventera.hsmnzaydn.eventeraandroid.ui.base;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,8 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 
+import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
+import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerComponent;
+import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerModule;
 import com.eventera.hsmnzaydn.eventeraandroid.eventbus.EventB;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.DialogPopup.PopupFragment;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity.SplashActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -22,13 +27,12 @@ import org.greenrobot.eventbus.Subscribe;
 public class BaseActivity extends AppCompatActivity implements MvpView,BaseFragment.Callback {
     private ProgressDialog progressDialog;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
     }
+
 
     @Override
     public void onFragmentAttached() {
@@ -93,4 +97,6 @@ public class BaseActivity extends AppCompatActivity implements MvpView,BaseFragm
     public void killActivity() {
         this.finish();
     }
+
+
 }

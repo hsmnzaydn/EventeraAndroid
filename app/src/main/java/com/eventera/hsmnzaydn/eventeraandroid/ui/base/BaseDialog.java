@@ -1,5 +1,6 @@
 package com.eventera.hsmnzaydn.eventeraandroid.ui.base;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -15,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
+
+import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
 
 import butterknife.Unbinder;
 
@@ -152,6 +155,7 @@ public abstract class BaseDialog extends DialogFragment implements DialogMvpView
         }
         super.onDestroy();
     }
+
 
     private static final String TAG = "RateUsDialog";
 

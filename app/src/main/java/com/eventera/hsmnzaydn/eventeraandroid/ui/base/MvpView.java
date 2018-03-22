@@ -1,5 +1,7 @@
 package com.eventera.hsmnzaydn.eventeraandroid.ui.base;
 
+import android.app.Activity;
+
 /**
  * Created by hsmnzaydn on 12.01.2018.
  */

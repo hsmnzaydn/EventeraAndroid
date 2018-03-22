@@ -2,6 +2,7 @@ package com.eventera.hsmnzaydn.eventeraandroid.data.network.service;
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiClient;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiInterface;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.NetworkError;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
 
 import javax.inject.Inject;
@@ -45,7 +46,7 @@ public class StartApplicationImp implements StartApplication{
 
                     @Override
                     public void onError(Throwable e) {
-                       // callback.onError(new Throwable(e));
+                        callback.onError(new NetworkError(e));
 
                     }
 

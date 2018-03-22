@@ -9,9 +9,10 @@ import com.eventera.hsmnzaydn.eventeraandroid.ui.base.BaseActivity;
 
 import javax.inject.Inject;
 
+
 public class SplashActivity extends BaseActivity implements SplashActivityMvpView {
 
-    SplashActivityPresenter presenter;
+    SplashActivityPresenter<SplashActivityMvpView> presenter;
 
     @Inject
     DataManager dataManager;
@@ -20,10 +21,12 @@ public class SplashActivity extends BaseActivity implements SplashActivityMvpVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        ((DaggerApplication) getApplication()).getDaggerComponent().inject(SplashActivity.this);
+        ((DaggerApplication) getApplication()).getDaggerComponent().inject(this);
 
         presenter=new SplashActivityPresenter(this,dataManager);
         presenter.onAttach(this);
         presenter.startApplication();
     }
+
+
 }

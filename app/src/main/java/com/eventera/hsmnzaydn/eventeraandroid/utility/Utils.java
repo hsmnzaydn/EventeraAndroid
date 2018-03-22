@@ -37,6 +37,7 @@ import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Response;
+import retrofit2.adapter.rxjava.HttpException;
 
 
 /**
@@ -190,6 +191,8 @@ public class Utils {
         return errorResponse;
 
     }
+
+
 
     public static boolean checkInternet(Activity activity) {
         ConnectivityManager cm =

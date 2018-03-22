@@ -3,6 +3,7 @@ package com.eventera.hsmnzaydn.eventeraandroid.data;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiHelper;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
+import com.eventera.hsmnzaydn.eventeraandroid.data.pref.PrefHelper;
 
 import javax.inject.Inject;
 
@@ -12,14 +13,36 @@ import javax.inject.Inject;
 
 public class AppDataManager implements DataManager {
     ApiHelper apiHelper;
+    PrefHelper prefHelper;
 
     @Inject
-    public AppDataManager(ApiHelper apiHelper) {
+    public AppDataManager(ApiHelper apiHelper,PrefHelper prefHelper) {
         this.apiHelper = apiHelper;
+        this.prefHelper=prefHelper;
     }
 
     @Override
     public void startApplication(ServiceCallback<CommonResponse> callback) {
         apiHelper.startApplication(callback);
+    }
+
+    @Override
+    public void saveUdid(String udid) {
+        prefHelper.saveUdid(udid);
+    }
+
+    @Override
+    public String getUdid() {
+        return prefHelper.getUdid();
+    }
+
+    @Override
+    public void saveAuthorization(String authorization) {
+            prefHelper.saveAuthorization(authorization);
+    }
+
+    @Override
+    public String getAuthorization() {
+        return prefHelper.getAuthorization();
     }
 }

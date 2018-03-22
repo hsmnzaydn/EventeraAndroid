@@ -10,8 +10,8 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiHelper;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.AppApiHelper;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplication;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplicationImp;
-import com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity.SplashActivityMvpView;
-import com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity.SplashActivityPresenter;
+import com.eventera.hsmnzaydn.eventeraandroid.data.pref.AppPrefHelper;
+import com.eventera.hsmnzaydn.eventeraandroid.data.pref.PrefHelper;
 
 import javax.inject.Singleton;
 
@@ -46,8 +46,8 @@ public class DaggerModule {
 
     @Provides
     @Singleton
-    DataManager provideDataManager(ApiHelper apiHelper){
-        return new AppDataManager(apiHelper);
+    DataManager provideDataManager(ApiHelper apiHelper,PrefHelper prefHelper){
+        return new AppDataManager(apiHelper,prefHelper);
     }
 
 
@@ -63,12 +63,11 @@ public class DaggerModule {
         return new StartApplicationImp();
     }
 
-
     @Provides
-    @PerActivity
-    SplashActivityPresenter provideMainPresenter(
-            SplashActivityPresenter presenter) {
-        return presenter;
+    @Singleton
+    PrefHelper provicePrefHelper(Context context){
+        return new AppPrefHelper(context);
     }
+
 
 }
