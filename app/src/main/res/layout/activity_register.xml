@@ -1,12 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.eventera.hsmnzaydn.eventeraandroid.ui.RegisterActivity.RegisterActivity">
-<TextView
-    android:text="register"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-</android.support.constraint.ConstraintLayout>
+
+
+    <android.support.v7.widget.CardView
+        app:cardBackgroundColor="@color/transparent_color_primary"
+        style="@style/RowCardViewStyle"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:hint="@string/email"
+                android:drawableLeft="@mipmap/ic_mail"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:hint="@string/job"
+                android:drawableLeft="@mipmap/ic_job"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_margin="3dp"
+                android:hint="@string/job"
+                style="@style/WriteEditText"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
+
+
+        </LinearLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+</LinearLayout>

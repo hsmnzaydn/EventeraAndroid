@@ -59,6 +59,11 @@ Valid for 90 minutes after stamping, gives you unrestricted travels for all the 
 
 Valid for 48 hours after stamping, gives you unrestricted travels for all the Milan Municipality area. The ticket is valid even on the rail network, including the urban rail lines of Trenord and the \'Passante Ferroviario' (Urban Railway Network)."</string>
 
+
+
+    <string name="email">E-Mail</string>
+    <string name="job">Job</string>
+
     <!-- Popup -->
     <string name="popup_type_one_title">This feature will be available soon...</string>
 

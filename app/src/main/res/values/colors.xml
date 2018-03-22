@@ -6,6 +6,7 @@
     <color name="grey">#dfe0e6</color>
     <color name="tabs_color">#fbfbfc</color>
     <color name="transparent">#00000000</color>
+    <color name="transparent_color_primary">#ccFF6D00</color>
 
     <color name="bottom_of_toolbar">#fbfbfc</color>
 

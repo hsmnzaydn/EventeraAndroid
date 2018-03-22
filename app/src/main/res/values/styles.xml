@@ -42,8 +42,6 @@
     <style name="EditText">
         <item name="android:layout_margin">2dp</item>
         <item name="android:background">@drawable/background_edit_text</item>
-        <item name="android:maxLength">138</item>
-
         <item name="android:textCursorDrawable">@drawable/edittext_cursor_color</item>
     </style>
 
@@ -87,7 +85,6 @@
     </style>
 
     <style name="WriteEditText" parent="EditText">
-
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:background">@drawable/background_edit_text</item>
