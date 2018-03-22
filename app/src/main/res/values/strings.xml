@@ -1,3 +1,129 @@
 <resources>
     <string name="app_name">EventeraAndroid</string>
+
+    <string name="Accept">Accept</string>
+    <string name="Reject">Reject</string>
+
+    <string name="check_in">CHECK-IN</string>
+    <string name="check_out">CHECK-OUT</string>
+
+    <string name="roommates">Roommates:</string>
+    <string name="RightArrow" translatable="false">➔</string>
+
+    <string name="all">All</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="hotel">Hotel</string>
+    <string name="Enter_sms_code">Please enter the sms code</string>
+    <string name="Enter_phone_number">Please enter the phone number registered on the system</string>
+    <string name="Sms_Code">Sms Code</string>
+
+
+    <string name="location">My Location</string>
+
+    <string name="tollbar_search">Search</string>
+    <string name="tollbar_setting">Setting</string>
+
+
+    <string name="tr" translatable="false">tr</string>
+    <string name="en" translatable="false">en</string>
+    <string name="TR" translatable="false">TR</string>
+    <string name="EN" translatable="false">EN</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="send">Send</string>
+    <string name="day">Night</string>
+
+    <string name="code_tr" translatable="false">+90</string>
+    <string name="HallText" translatable="false">Hall 13 / A10-A16</string>
+
+    <string name="our_location">Our Location is:</string>
+
+    <string name="row_reservation_reason_hint">You can write your reason</string>
+
+    <string name="metro_floor_plan">Metro Map</string>
+    <string name="metro_ticket_price">Ticket Prices</string>
+
+
+    <string name="urban_ticket">Urban Ticket:</string>
+    <string name="urban_price">Valid for 90 minutes after stamping, gives you unrestricted travels for all the Milan Municipality area. The ticket is valid for a single journey on the underground or rail network, including the urban rail lines of Trenord and the \'Passante Ferroviario' (Urban Railway Network).</string>
+
+    <string name="one_day_ticket">One Day Ticket</string>
+    <string name="one_day_price">Price: € 1.50 \n
+
+Valid for 90 minutes after stamping, gives you unrestricted travels for all the Milan Municipality area. The ticket is valid for a single journey on the underground or rail network, including the urban rail lines of Trenord and the \'Passante Ferroviario' (Urban Railway Network).</string>
+
+
+    <string name="two_day_ticket">Two Day Ticket</string>
+    <string name="two_day_price">Price: € 8.25 \n
+
+Valid for 48 hours after stamping, gives you unrestricted travels for all the Milan Municipality area. The ticket is valid even on the rail network, including the urban rail lines of Trenord and the \'Passante Ferroviario' (Urban Railway Network)."</string>
+
+    <!-- Popup -->
+    <string name="popup_type_one_title">This feature will be available soon...</string>
+
+    <string name="popup_type_two_title_optional">There is a new version available</string>
+    <string name="popup_type_two_title_mandatory">You need to update to continue using the application.</string>
+    <string name="popup_type_two_pass">Continue</string>
+    <string name="popup_type_two_title">There is a new version available</string>
+    <string name="popup_type_two_install">Update</string>
+    <string name="popup_type_two_notification">There is a notification. Do you want show it?</string>
+    <string name="popup_type_two_show_notification">Show</string>
+
+    <!-- Titles -->
+    <string name="title_select_country">Select Country</string>
+    <string name="title_home_page">Home Page</string>
+    <string name="title_setting">Settings</string>
+    <string name="title_reservations">Reservations</string>
+    <string name="title_events">Events</string>
+    <string name="title_shuttle">Shuttles</string>
+    <string name="title_metro_map">Metro Map</string>
+    <string name="title_floor_map">Floor Map</string>
+    <string name="title_metro">Metro</string>
+    <string name="title_metro_ticket">Ticket Price</string>
+    <string name="title_poi">Poi List</string>
+    <!-- TabIconName -->
+    <string name="tab_icon_home_name">Main</string>
+    <string name="tab_icon_map_name">Map</string>
+    <string name="tab_icon_notification_name">Notification</string>
+    <string name="tab_icon_barcode_name">Entry Pass</string>
+
+    <!-- MainFragment List -->
+    <string name="main_fragment_events">Events</string>
+    <string name="main_fragment_shuttles">Shuttles</string>
+    <string name="main_fragment_metro" translatable="false">Metro</string>
+    <string name="main_fragment_floor_plan">Expo Floor Plan</string>
+    <string name="main_fragment_reservation">Hotel Reservation</string>
+
+    <!-- ERROR -->
+    <string name="Error_fill">Please fill area</string>
+    <string name="error_server">There is a problem, please try again</string>
+
+
+    <!-- Empty -->
+    <string name="empty_reservation_list">There is no reservation</string>
+    <string name="empty_event_list">There is no event</string>
+    <string name="empty_shuttle_list">There is no shuttle</string>
+    <string name="empty_notification_list">There is no notification</string>
+    <string name="empty_poi_list">There is no poi</string>
+
+
+
+    <!-- Setting -->
+    <string name="setting_language">Language</string>
+    <string name="setting_logout">Logout</string>
+
+
+    <!-- Titles -->
+    <string name="row_reservations_statement">Statement:</string>
+    <string name="Error_fill_otp">Please fill all area</string>
+    <string name="dialog_open_one_april">This service available soon...</string>
+
+
+    <!-- Description -->
+    <string name="reservation_accepted">Accepted</string>
+    <string name="route_of_place">Route Of Place</string>
+    <string name="title_activity_maps">Map</string>
+
+
 </resources>

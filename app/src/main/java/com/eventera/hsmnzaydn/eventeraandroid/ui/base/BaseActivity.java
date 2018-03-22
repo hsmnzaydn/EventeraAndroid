@@ -7,10 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 
+import com.eventera.hsmnzaydn.eventeraandroid.eventbus.EventB;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.DialogPopup.PopupFragment;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 
 /**
@@ -55,7 +57,10 @@ public class BaseActivity extends AppCompatActivity implements MvpView,BaseFragm
         super.onStop();
         EventBus.getDefault().unregister(this);
     }
+    @Subscribe
+    public void getMessageEvent(EventB messageOTPEvent) {
 
+    }
 
 
     @Override

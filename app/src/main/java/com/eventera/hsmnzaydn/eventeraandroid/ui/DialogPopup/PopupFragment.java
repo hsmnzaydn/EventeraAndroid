@@ -13,14 +13,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mobistech.seturmice.EventBus.ReservationIdEvent;
-import com.mobistech.seturmice.EventBus.UpdateAvailableEvent;
-import com.mobistech.seturmice.R;
-import com.mobistech.seturmice.Utility.Utils;
-import com.mobistech.seturmice.data.network.model.UpdateAvailable;
-import com.mobistech.seturmice.data.network.model.requestmodel.ReservationRequest;
-import com.mobistech.seturmice.ui.MainActivity.MainActivity;
-import com.mobistech.seturmice.ui.base.BaseDialog;
+
+import com.eventera.hsmnzaydn.eventeraandroid.R;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.base.BaseDialog;
+import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -105,7 +101,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
     @BindView(R.id.dialog_type_three_cancel_button)
     Button dialogTypeThreeCancelButton;
     //UpdateAvailable Status
-        private UpdateAvailable updateAvailable;
+     //   private UpdateAvailable updateAvailable;
 
 
         private int reservationId;
@@ -133,7 +129,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
             dialogTypeOne.setVisibility(View.VISIBLE);
             dialogTypeOneTextView.setText(getActivity().getString(R.string.popup_type_one_title));
         }
-        if(dialogType == 2 && dialogFunction == 1){
+       /* if(dialogType == 2 && dialogFunction == 1){
             dialogTypeTwo.setVisibility(View.VISIBLE);
             dialogTypeTwoOkButton.setText(getActivity().getString(R.string.popup_type_two_install));
             dialogTypeTwoCancelButton.setText(getActivity().getString(R.string.popup_type_two_pass));
@@ -145,7 +141,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
             }
 
 
-        }
+        }*/
         if(dialogType == 2 && dialogFunction == 2){
             dialogTypeTwo.setVisibility(View.VISIBLE);
             dialogTypeTwoOkButton.setText(getActivity().getString(R.string.popup_type_two_show_notification));
@@ -175,7 +171,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
         switch (dialogFunction){
             case 1:
                 getActivity().finish();
-                Utils.changeActivity(getActivity(), MainActivity.class);
+              //  Utils.changeActivity(getActivity(), MainActivity.class);
                 break;
         }
 
@@ -185,7 +181,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
     public void clickToOkButtonOfTypeTwo(){
         switch (dialogFunction){
             case 1:
-                Utils.openLink(getActivity(),updateAvailable.getLink());
+               // Utils.openLink(getActivity(),updateAvailable.getLink());
                 break;
             case 2:
                  break;
@@ -197,7 +193,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
     public void clickToCancelButtonOfTypeTwo(){
         switch (dialogFunction){
             case 1:
-                Utils.changeActivity(getActivity(),MainActivity.class);
+              //  Utils.changeActivity(getActivity(),MainActivity.class);
                 break;
             case 2:
                  dismiss();
@@ -209,11 +205,12 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
     public void clickToSendButtonOfTypeThree(){
         switch (dialogFunction){
             case 1:
-                ReservationRequest reservationRequest=new ReservationRequest();
+             /*   ReservationRequest reservationRequest=new ReservationRequest();
                 reservationRequest.setStatus("DECLINED");
                 reservationRequest.setReason(dialogTypeThreeEditText.getText().toString());
                 dialogFragmentPresenter.setReservationStatus(reservationRequest,reservationId);
                 break;
+                */
         }
 
 
@@ -235,18 +232,6 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
         dialogFunction=function;
     }
 
-    @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
-    public void getUpdateAvailable(UpdateAvailableEvent updateAvailableEvent){
-            updateAvailable=updateAvailableEvent.getUpdateAvailable();
-            EventBus.getDefault().removeStickyEvent(UpdateAvailable.class);
-    }
-
-
-    @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
-    public void getReservationId(ReservationIdEvent reservationIdEvent){
-        reservationId=reservationIdEvent.getReservationId();
-        EventBus.getDefault().removeStickyEvent(ReservationIdEvent.class);
-    }
 
 
 

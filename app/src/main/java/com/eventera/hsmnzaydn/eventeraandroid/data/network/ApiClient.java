@@ -12,13 +12,14 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class ApiClient {
 
 
-    public static final String BASE_URL = "localhost/api/";
+    public static final String BASE_URL = "http://192.168.0.33:8080/api/";
     private static Retrofit retrofit = null;
 
 
@@ -46,6 +47,7 @@ public class ApiClient {
                     .baseUrl(BASE_URL)
                     .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
         }
         return retrofit;

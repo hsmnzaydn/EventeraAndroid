@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.eventera.hsmnzaydn.eventeraandroid.SplashActivity">
+    tools:context="com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity.SplashActivity">
 
     <TextView
         android:layout_width="wrap_content"
