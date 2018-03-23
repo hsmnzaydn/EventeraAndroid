@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     tools:context="com.eventera.hsmnzaydn.eventeraandroid.ui.RegisterActivity.RegisterActivity">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
-    <android.support.v7.widget.CardView
-        app:cardBackgroundColor="@color/transparent_color_primary"
-        style="@style/RowCardViewStyle"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_margin="5dp"
@@ -22,33 +19,120 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <EditText
-                android:hint="@string/email"
-                android:drawableLeft="@mipmap/ic_mail"
-                style="@style/EditText"
+            <LinearLayout
+                style="@style/RegisterLinearLayoutStyle">
+                <ImageView
+                    style="@style/RegisterImageViewStyle"
+                    android:src="@mipmap/ic_mail"/>
+                <EditText
+                    android:id="@+id/activity_register_email_edit_text"
+                    android:hint="@string/email"
+                    style="@style/RegisterEditText" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/RegisterLinearLayoutStyle">
+                <ImageView
+                    style="@style/RegisterImageViewStyle"
+                    android:src="@mipmap/ic_job"/>
+                <EditText
+                    android:id="@+id/activity_register_job_edit_text"
+                    android:hint="@string/job"
+                    style="@style/RegisterEditText" />
+
+            </LinearLayout>
+            <LinearLayout
+                style="@style/RegisterLinearLayoutStyle">
+                <ImageView
+                    style="@style/RegisterImageViewStyle"
+                    android:src="@mipmap/ic_poi"/>
+                <EditText
+                    android:id="@+id/activity_register_adress_edit_text"
+                    android:hint="@string/adress"
+                    style="@style/RegisterEditText" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/RegisterLinearLayoutStyle">
+                <ImageView
+                    style="@style/RegisterImageViewStyle"
+                    android:src="@mipmap/ic_calender"/>
+                <EditText
+                    android:inputType="number"
+                    android:id="@+id/activity_register_age_edit_text"
+                    android:hint="@string/age"
+                    style="@style/RegisterEditText" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:background="@drawable/linear_layout_border"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:padding="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/activity_register_female_linear_layout"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/activity_register_female_imageView"
+                        android:tint="@color/white"
+                        style="@style/RegisterImageViewStyle"
+                        android:src="@mipmap/ic_female"/>
+                    <Button
+                        android:id="@+id/activity_register_female_button"
+                        android:textColor="@android:color/white"
+                        android:background="@color/colorPrimaryDark"
+                        android:text="@string/female"
+                        android:layout_marginRight="-5dp"
+                        style="@style/RegisterSwitchButton" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/activity_register_male_linear_layout"
+                    android:background="@color/transparent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/activity_register_male_imageView"
+                        android:tint="@color/black"
+                        style="@style/RegisterImageViewStyle"
+                        android:src="@mipmap/ic_male"/>
+
+                <Button
+                    android:id="@+id/activity_register_male_button"
+                    android:background="@color/transparent"
+                    android:text="@string/male"
+                    style="@style/RegisterSwitchButton"
+                     />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/activity_register_step_two_button"
+                android:layout_marginTop="100dp"
+                android:text="@string/step_two"
+                style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <EditText
-                android:hint="@string/job"
-                android:drawableLeft="@mipmap/ic_job"
-                style="@style/EditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:layout_margin="3dp"
-                android:hint="@string/job"
-                style="@style/WriteEditText"
-                android:layout_width="match_parent"
-                android:layout_height="150dp" />
 
 
         </LinearLayout>
 
 
 
-    </android.support.v7.widget.CardView>
 
-
+</ScrollView>
 
 
 </LinearLayout>

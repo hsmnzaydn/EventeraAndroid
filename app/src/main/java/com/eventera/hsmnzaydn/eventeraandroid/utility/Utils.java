@@ -15,6 +15,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.view.Gravity;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -211,6 +213,11 @@ public class Utils {
         else {
             Picasso.with(activity).load(Constant.BASE_URL+imageUrl).fit().centerCrop().placeholder(R.drawable.action_loading_image).error(placeHolder).into(imageView);
         }
+    }
+
+    public static void openKeyboard(EditText editText,Activity activity){
+        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+
     }
 
 

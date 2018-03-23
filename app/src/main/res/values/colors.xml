@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF9100</color>
-    <color name="colorPrimaryDark">#FF6D00</color>
-    <color name="colorAccent">#F57C00</color>
+    <color name="colorPrimary">#616161</color>
+    <color name="colorPrimaryDark">#424242</color>
+    <color name="colorAccent">#424242</color>
     <color name="grey">#dfe0e6</color>
     <color name="tabs_color">#fbfbfc</color>
     <color name="transparent">#00000000</color>
-    <color name="transparent_color_primary">#ccFF6D00</color>
+    <color name="transparent_color_primary">#cc424242</color>
 
     <color name="bottom_of_toolbar">#fbfbfc</color>
+    <color name="white">#ffff</color>
 
     <color name="black">#000</color>
     <color name="green">#9CCC65</color>
     <color name="red">#FF3D00</color>
-
+    <color name="darker_grey">#aaa</color>
 
     <color name="dark_blue">#0000FF</color>
 </resources>

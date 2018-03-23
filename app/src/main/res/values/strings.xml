@@ -63,7 +63,11 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
 
     <string name="email">E-Mail</string>
     <string name="job">Job</string>
-
+    <string name="adress">Your adress</string>
+    <string name="age">Age</string>
+    <string name="male">MALE</string>
+    <string name="female">FEMALE</string>
+    <string name="step_two">Step 2</string>
     <!-- Popup -->
     <string name="popup_type_one_title">This feature will be available soon...</string>
 
