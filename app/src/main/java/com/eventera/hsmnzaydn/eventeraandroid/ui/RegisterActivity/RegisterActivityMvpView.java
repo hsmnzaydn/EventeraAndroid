@@ -8,5 +8,5 @@ import com.eventera.hsmnzaydn.eventeraandroid.ui.base.MvpView;
 
 public interface RegisterActivityMvpView extends MvpView{
 
-
+    void openRegisterStepTwo();
 }

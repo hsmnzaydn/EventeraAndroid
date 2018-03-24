@@ -121,7 +121,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
         setUnBinder(ButterKnife.bind(this, root));
         EventBus.getDefault().register(this);
 
-        dialogFragmentPresenter=new PopupFragmentPresenter(getActivity(),this);
+        dialogFragmentPresenter=new PopupFragmentPresenter(getActivity());
         dialogFragmentPresenter.onAttach(this);
 
 

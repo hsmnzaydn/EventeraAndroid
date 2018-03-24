@@ -25,7 +25,7 @@ public class SplashActivity extends BaseActivity implements SplashActivityMvpVie
         setContentView(R.layout.activity_splash);
         ((DaggerApplication) getApplication()).getDaggerComponent().inject(this);
 
-        presenter=new SplashActivityPresenter(this,dataManager);
+        presenter=new SplashActivityPresenter(this,getApplicationContext(),dataManager);
         presenter.startApplication();
     }
 

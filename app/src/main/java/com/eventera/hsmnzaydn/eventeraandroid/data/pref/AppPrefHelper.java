@@ -31,7 +31,7 @@ public class AppPrefHelper implements PrefHelper {
     }
     @Override
     public void saveUdid(String udid) {
-        mPrefs.edit().putString(PREF_UDID, Utils.getUdid(context)).apply();
+        mPrefs.edit().putString(PREF_UDID, udid).apply();
 
     }
 

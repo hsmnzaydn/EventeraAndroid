@@ -90,8 +90,8 @@ public class Utils {
         activity.startActivity(intent);
     }
 
-    public static String getUdid(Context activity) {
-        String udid = Settings.Secure.getString(activity.getContentResolver(),
+    public static String getUdid(Context context) {
+        String udid = Settings.Secure.getString(context.getContentResolver(),
                 Settings.Secure.ANDROID_ID);
 
         return udid;

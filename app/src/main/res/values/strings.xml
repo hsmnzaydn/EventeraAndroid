@@ -60,7 +60,6 @@ Valid for 90 minutes after stamping, gives you unrestricted travels for all the 
 Valid for 48 hours after stamping, gives you unrestricted travels for all the Milan Municipality area. The ticket is valid even on the rail network, including the urban rail lines of Trenord and the \'Passante Ferroviario' (Urban Railway Network)."</string>
 
 
-
     <string name="email">E-Mail</string>
     <string name="job">Job</string>
     <string name="adress">Your adress</string>
@@ -80,17 +79,7 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
     <string name="popup_type_two_show_notification">Show</string>
 
     <!-- Titles -->
-    <string name="title_select_country">Select Country</string>
-    <string name="title_home_page">Home Page</string>
-    <string name="title_setting">Settings</string>
-    <string name="title_reservations">Reservations</string>
-    <string name="title_events">Events</string>
-    <string name="title_shuttle">Shuttles</string>
-    <string name="title_metro_map">Metro Map</string>
-    <string name="title_floor_map">Floor Map</string>
-    <string name="title_metro">Metro</string>
-    <string name="title_metro_ticket">Ticket Price</string>
-    <string name="title_poi">Poi List</string>
+    <string name="title_register">Register</string>
     <!-- TabIconName -->
     <string name="tab_icon_home_name">Main</string>
     <string name="tab_icon_map_name">Map</string>
@@ -105,7 +94,7 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
     <string name="main_fragment_reservation">Hotel Reservation</string>
 
     <!-- ERROR -->
-    <string name="Error_fill">Please fill area</string>
+    <string name="error_fill">Please fill area</string>
     <string name="error_server">There is a problem, please try again</string>
 
 

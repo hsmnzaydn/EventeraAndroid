@@ -18,7 +18,7 @@ public class RegisterObject {
     private String mail;
     @SerializedName("age")
     @Expose
-    private Integer age;
+    private String age;
     @SerializedName("job")
     @Expose
     private String job;
@@ -45,11 +45,11 @@ public class RegisterObject {
         this.mail = mail;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -75,5 +75,14 @@ public class RegisterObject {
 
     public void setInterests(List<Interest> interests) {
         this.interests = interests;
+    }
+
+
+    public boolean emptyControll(){
+        if(getAdress().isEmpty() && getAge().isEmpty() && getJob().isEmpty() && getMail().isEmpty() && getSex().isEmpty() ){
+            return true;
+        }
+        else
+        return false;
     }
 }

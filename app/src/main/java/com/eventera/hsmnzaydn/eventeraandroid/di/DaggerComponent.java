@@ -4,6 +4,7 @@ package com.eventera.hsmnzaydn.eventeraandroid.di;
 
 import android.app.Activity;
 
+import com.eventera.hsmnzaydn.eventeraandroid.ui.RegisterActivityStepTwo.RegisterActivityStepTwo;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity.SplashActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity.SplashActivityPresenter;
 
@@ -21,4 +22,5 @@ public interface DaggerComponent {
     void inject(SplashActivity splashActivity);
 
     void inject(Activity activity);
+    void inject(RegisterActivityStepTwo registerActivityStepTwo);
 }

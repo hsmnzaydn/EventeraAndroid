@@ -8,5 +8,5 @@ import com.eventera.hsmnzaydn.eventeraandroid.ui.base.MvpPresenter;
  */
 
 public interface RegisterActivityMvpPresenter <V extends RegisterActivityMvpView> extends MvpPresenter<V> {
-    void register(RegisterObject registerObject);
+    void register(String eMail,String job,String adress,String age,String sex);
 }

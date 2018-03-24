@@ -18,13 +18,9 @@ public class PopupFragmentPresenter<V extends DialogMvpView> extends BasePresent
     private Activity activity;
     private PopupFragment popupFragment;
 
-    public PopupFragmentPresenter(Activity activity, PopupFragment popupFragment) {
-        super((V) activity);
-        this.activity = activity;
-        this.popupFragment = popupFragment;
+
+    public PopupFragmentPresenter(Activity activity) {
+        super(activity);
     }
-
-
-
-    }
+}
 

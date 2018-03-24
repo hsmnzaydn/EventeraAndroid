@@ -1,6 +1,7 @@
 package com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
@@ -18,21 +19,20 @@ import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 public class SplashActivityPresenter<V extends SplashActivityMvpView> extends BasePresenter<V> implements SplashActivityMvpPresenter<V> {
 
     Activity activity;
-
+    private Context context;
 
     DataManager dataManager;
 
-    public SplashActivityPresenter(Activity activity, DataManager dataManager) {
-        super((V) activity);
-        this.activity = activity;
-
-        this.dataManager = dataManager;
-
+    public SplashActivityPresenter(Activity activity, Context context,DataManager dataManager) {
+        super( activity);
+        this.dataManager=dataManager;
+        this.context=context;
     }
+
 
     @Override
     public void startApplication() {
-        dataManager.saveUdid(Utils.getUdid(activity));
+        dataManager.saveUdid(Utils.getUdid(context));
         Constant.UDID = dataManager.getUdid();
         if (dataManager.getAuthorization() != null) {
             Constant.AUTHORIZATION = dataManager.getAuthorization();
@@ -46,12 +46,16 @@ public class SplashActivityPresenter<V extends SplashActivityMvpView> extends Ba
                 if(response.getCode() == Constant.UNREGISTER_CODE){
                     getMvpView().openRegisteractivity();
                 }
+
+
+
                 getMvpView().killActivity();
             }
 
             @Override
             public void onError(String message) {
                 getMvpView().showError(message);
+                getMvpView().killActivity();
                 getMvpView().dissmisLoading();
             }
 

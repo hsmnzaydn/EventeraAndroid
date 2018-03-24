@@ -1,6 +1,11 @@
 package com.eventera.hsmnzaydn.eventeraandroid.ui.base;
 
 
+import android.app.Activity;
+
+import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
+
+import butterknife.ButterKnife;
 
 /**
  * Created by hsmnzaydn on 12.01.2018.
@@ -8,9 +13,11 @@ package com.eventera.hsmnzaydn.eventeraandroid.ui.base;
 
 public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
-
-    public BasePresenter(V mvpView) {
-        this.mvpView = mvpView;
+    private Activity activity;
+    public BasePresenter(Activity activity) {
+        this.activity=activity;
+        onAttach((V) activity);
+        ButterKnife.bind(activity);
     }
 
     private V mvpView;

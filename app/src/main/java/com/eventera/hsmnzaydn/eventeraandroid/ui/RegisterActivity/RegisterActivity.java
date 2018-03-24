@@ -12,12 +12,18 @@ import android.widget.LinearLayout;
 
 import com.eventera.hsmnzaydn.eventeraandroid.R;
 import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
+import com.eventera.hsmnzaydn.eventeraandroid.eventbus.RegisterObjectEvent;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.RegisterActivityStepTwo.RegisterActivityStepTwo;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.BaseActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Inject;
 
 import butterknife.BindColor;
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -73,17 +79,23 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityMv
 
     @BindColor(R.color.darker_grey)
     int darker_gray;
+
+    @BindString(R.string.title_register)
+    String title;
+
+    private String sex="Female";
+
     RegisterActivityPresenter registerActivityPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        ButterKnife.bind(this);
 
         registerActivityPresenter = new RegisterActivityPresenter(this, dataManager);
+        setTitle(title);
         Utils.openKeyboard(emailEditText, this);
-
+        setTitle(title);
 
         ageEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -131,6 +143,14 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityMv
         changeColorOfMaleButton();
     }
 
+
+    @OnClick(R.id.activity_register_step_two_button)
+    public void clickToStepTwo() {
+
+        registerActivityPresenter.register(emailEditText.getText().toString(), jobEditText.getText().toString(), adressEditText.getText().toString(), ageEditText.getText().toString(), sex);
+    }
+
+
     public void changeColorOfFemaleButton() {
         femaleLinearLayout.setBackgroundColor(primaryDarkColor);
         femaleButton.setBackgroundColor(primaryDarkColor);
@@ -140,6 +160,7 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityMv
         maleLinearLayout.setBackgroundColor(transparentColor);
         ImageViewCompat.setImageTintList(femaleImage, ColorStateList.valueOf(whiteColor));
         ImageViewCompat.setImageTintList(maleImageView, ColorStateList.valueOf(blackColor));
+        sex = femaleButton.getText().toString();
     }
 
     public void changeColorOfMaleButton() {
@@ -150,5 +171,12 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityMv
         maleButton.setTextColor(whiteColor);
         ImageViewCompat.setImageTintList(maleImageView, ColorStateList.valueOf(whiteColor));
         ImageViewCompat.setImageTintList(femaleImage, ColorStateList.valueOf(blackColor));
+        sex = maleButton.getText().toString();
+
+    }
+
+    @Override
+    public void openRegisterStepTwo() {
+        Utils.changeActivity(this, RegisterActivityStepTwo.class);
     }
 }

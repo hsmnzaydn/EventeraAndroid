@@ -1,26 +1,18 @@
 package com.eventera.hsmnzaydn.eventeraandroid.data.network;
 
-import android.text.TextUtils;
 
-import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
-import com.eventera.hsmnzaydn.eventeraandroid.utility.Constant;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
-import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
-import retrofit2.Response;
+
 import retrofit2.adapter.rxjava.HttpException;
 
-import static java.net.HttpURLConnection.HTTP_UNAUTHORIZED;
 
 public class NetworkError extends Throwable {
     public static final String DEFAULT_ERROR_MESSAGE = "Something went wrong! Please try again.";
-    public static final String NETWORK_ERROR_MESSAGE = "No Internet Connection!";
-    private static final String ERROR_MESSAGE_HEADER = "Error-Message";
+    public static final String NETWORK_ERROR_MESSAGE = "Can not connect to server";
     private final Throwable error;
 
     public NetworkError(Throwable e) {
