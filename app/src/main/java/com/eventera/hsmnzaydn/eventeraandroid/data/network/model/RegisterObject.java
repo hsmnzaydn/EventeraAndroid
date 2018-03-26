@@ -5,60 +5,46 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+
 /**
  * Created by hsmnzaydn on 22.03.2018.
  */
 
 public class RegisterObject {
-    @SerializedName("sex")
+
+
     @Expose
-    private String sex;
-    @SerializedName("mail")
-    @Expose
-    private String mail;
-    @SerializedName("age")
-    @Expose
-    private String age;
-    @SerializedName("job")
-    @Expose
-    private String job;
-    @SerializedName("adress")
-    @Expose
-    private String adress;
     @SerializedName("interests")
+    private List<Interests> interests;
     @Expose
-    private List<Interest> interests = null;
+    @SerializedName("adress")
+    private String adress;
+    @Expose
+    @SerializedName("job")
+    private String job;
+    @Expose
+    @SerializedName("age")
+    private String age;
+    @Expose
+    @SerializedName("mail")
+    private String mail;
+    @Expose
+    @SerializedName("sex")
+    private String sex;
 
-    public String getSex() {
-        return sex;
+    public boolean emptyControll() {
+        if (getAdress().isEmpty() && getAge().isEmpty() && getJob().isEmpty() && getMail().isEmpty() && getSex().isEmpty()) {
+            return true;
+        } else
+            return false;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public List<Interests> getInterests() {
+        return interests;
     }
 
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
+    public void setInterests(List<Interests> ınterests) {
+        this.interests = ınterests;
     }
 
     public String getAdress() {
@@ -69,20 +55,35 @@ public class RegisterObject {
         this.adress = adress;
     }
 
-    public List<Interest> getInterests() {
-        return interests;
+    public String getJob() {
+        return job;
     }
 
-    public void setInterests(List<Interest> interests) {
-        this.interests = interests;
+    public void setJob(String job) {
+        this.job = job;
     }
 
+    public String getAge() {
+        return age;
+    }
 
-    public boolean emptyControll(){
-        if(getAdress().isEmpty() && getAge().isEmpty() && getJob().isEmpty() && getMail().isEmpty() && getSex().isEmpty() ){
-            return true;
-        }
-        else
-        return false;
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }

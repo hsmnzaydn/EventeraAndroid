@@ -30,6 +30,7 @@ public class Constant {
     public static final int SUCCESS_CODE=200;
     public static final int OTP_ERROR=458;
     public static final int SERVER_ERROR=500;
+    public static final int BAD_REQUEST=400;
 
 
     public static final String ACCEPTED_RESERVATION="ACCEPTED";

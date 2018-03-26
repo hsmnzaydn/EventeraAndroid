@@ -3,13 +3,9 @@ package com.eventera.hsmnzaydn.eventeraandroid.data.network.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by hsmnzaydn on 22.03.2018.
- */
-
-public class Interest {
-    @SerializedName("name")
+public class Interests {
     @Expose
+    @SerializedName("name")
     private String name;
 
     public String getName() {

@@ -1,5 +1,6 @@
 package com.eventera.hsmnzaydn.eventeraandroid.ui.RegisterActivityStepTwo;
 
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.MvpPresenter;
 
 /**
@@ -7,4 +8,6 @@ import com.eventera.hsmnzaydn.eventeraandroid.ui.base.MvpPresenter;
  */
 
 public interface RegisterActivityStepTwoMvpPresenter  <V extends RegisterActivityTwoStepTwoMvpView> extends MvpPresenter<V> {
+
+    void register(RegisterObject registerObject);
 }

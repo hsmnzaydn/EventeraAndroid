@@ -2,6 +2,7 @@ package com.eventera.hsmnzaydn.eventeraandroid.data.network;
 
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
+import com.eventera.hsmnzaydn.eventeraandroid.utility.Constant;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 
 import java.io.IOException;
@@ -34,18 +35,21 @@ public class NetworkError extends Throwable {
         }
         else {
             retrofit2.Response<?> response = ((HttpException) this.error).response();
-            if (response != null) {
                 if (!response.isSuccessful()) {
-                    serviceCallback.onResponse(Utils.errorHandler(response));
+                    if(response.code() == Constant.BAD_REQUEST){
+                        serviceCallback.onError(DEFAULT_ERROR_MESSAGE);
+                    }else if(response.code()== Constant.SERVER_ERROR){
+                        serviceCallback.onError(DEFAULT_ERROR_MESSAGE);
+                    }
+                    else {
+                        serviceCallback.onResponse(Utils.errorHandler(response));
+                    }
                 } else {
                     serviceCallback.onError(DEFAULT_ERROR_MESSAGE);
                 }
-            }
+
 
         }
-
-
-
 
     }
 

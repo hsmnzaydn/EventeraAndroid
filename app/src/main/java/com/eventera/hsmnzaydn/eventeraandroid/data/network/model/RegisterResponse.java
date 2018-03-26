@@ -8,22 +8,23 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class RegisterResponse {
-    @SerializedName("code")
-    @Expose
-    private Integer code;
-    @SerializedName("message")
-    @Expose
-    private String message;
-    @SerializedName("secret")
-    @Expose
-    private String secret;
 
-    public Integer getCode() {
-        return code;
+    @Expose
+    @SerializedName("secret")
+    private String secret;
+    @Expose
+    @SerializedName("message")
+    private String message;
+    @Expose
+    @SerializedName("code")
+    private int code;
+
+    public String getSecret() {
+        return secret;
     }
 
-    public void setCode(Integer code) {
-        this.code = code;
+    public void setSecret(String secret) {
+        this.secret = secret;
     }
 
     public String getMessage() {
@@ -34,11 +35,11 @@ public class RegisterResponse {
         this.message = message;
     }
 
-    public String getSecret() {
-        return secret;
+    public int getCode() {
+        return code;
     }
 
-    public void setSecret(String secret) {
-        this.secret = secret;
+    public void setCode(int code) {
+        this.code = code;
     }
 }

@@ -21,8 +21,9 @@ public class AppApiHelper implements ApiHelper {
     private RegisterService registerService;
 
     @Inject
-    public AppApiHelper(StartApplicationService startApplicationService) {
+    public AppApiHelper(StartApplicationService startApplicationService,RegisterService registerService) {
         this.startApplicationService = startApplicationService;
+        this.registerService=registerService;
     }
 
     @Override

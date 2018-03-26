@@ -147,7 +147,7 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityMv
     @OnClick(R.id.activity_register_step_two_button)
     public void clickToStepTwo() {
 
-        registerActivityPresenter.register(emailEditText.getText().toString(), jobEditText.getText().toString(), adressEditText.getText().toString(), ageEditText.getText().toString(), sex);
+        registerActivityPresenter.register(emailEditText.getText().toString(), jobEditText.getText().toString(), adressEditText.getText().toString(), ageEditText.getText().toString(), sex.toUpperCase());
     }
 
 

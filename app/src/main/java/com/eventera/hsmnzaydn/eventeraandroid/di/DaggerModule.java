@@ -42,10 +42,6 @@ public class DaggerModule {
         return context;
     }
 
-
-
-
-
     @Provides
     @Singleton
     DataManager provideDataManager(ApiHelper apiHelper,PrefHelper prefHelper){
@@ -55,8 +51,8 @@ public class DaggerModule {
 
     @Provides
     @Singleton
-    ApiHelper provideApiHelper(StartApplicationService startApplicationService){
-        return new AppApiHelper(startApplicationService);
+    ApiHelper provideApiHelper(StartApplicationService startApplicationService,RegisterService registerService){
+        return new AppApiHelper(startApplicationService,registerService);
     }
 
     @Provides
@@ -64,6 +60,8 @@ public class DaggerModule {
     StartApplicationService provideStartApplication(){
         return new StartApplicationServiceImp();
     }
+
+
 
     @Provides
     @Singleton
