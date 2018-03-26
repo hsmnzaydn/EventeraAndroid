@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.eventera.hsmnzaydn.eventeraandroid.R;
 import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
 import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.RegisterActivity.RegisterActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.BaseActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
@@ -32,7 +33,7 @@ public class SplashActivity extends BaseActivity implements SplashActivityMvpVie
 
     @Override
     public void openMainActivity() {
-
+        Utils.changeActivity(this, MainActivity.class);
     }
 
     @Override

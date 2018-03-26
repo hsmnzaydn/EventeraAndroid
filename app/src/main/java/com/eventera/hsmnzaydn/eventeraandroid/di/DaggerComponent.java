@@ -4,6 +4,10 @@ package com.eventera.hsmnzaydn.eventeraandroid.di;
 
 import android.app.Activity;
 
+import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivity;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityMvpPresenter;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityMvpView;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityPresenter;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.RegisterActivityStepTwo.RegisterActivityStepTwo;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity.SplashActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity.SplashActivityPresenter;
@@ -21,6 +25,6 @@ public interface DaggerComponent {
 
     void inject(SplashActivity splashActivity);
 
-    void inject(Activity activity);
     void inject(RegisterActivityStepTwo registerActivityStepTwo);
+    void inject(MainActivity mainActivity);
 }

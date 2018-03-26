@@ -95,7 +95,6 @@ public class RegisterActivity extends BaseActivity implements RegisterActivityMv
         registerActivityPresenter = new RegisterActivityPresenter(this, dataManager);
         setTitle(title);
         Utils.openKeyboard(emailEditText, this);
-        setTitle(title);
 
         ageEditText.addTextChangedListener(new TextWatcher() {
             @Override

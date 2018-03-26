@@ -45,6 +45,8 @@ public class SplashActivityPresenter<V extends SplashActivityMvpView> extends Ba
                 getMvpView().dissmisLoading();
                 if(response.getCode() == Constant.UNREGISTER_CODE){
                     getMvpView().openRegisteractivity();
+                }else if(response.getCode()== Constant.SUCCESS_CODE){
+                    getMvpView().openMainActivity();
                 }
 
 

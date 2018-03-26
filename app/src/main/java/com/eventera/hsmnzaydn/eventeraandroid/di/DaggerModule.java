@@ -1,5 +1,6 @@
 package com.eventera.hsmnzaydn.eventeraandroid.di;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
@@ -14,6 +15,11 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplicat
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplicationServiceImp;
 import com.eventera.hsmnzaydn.eventeraandroid.data.pref.AppPrefHelper;
 import com.eventera.hsmnzaydn.eventeraandroid.data.pref.PrefHelper;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityMvpPresenter;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityMvpView;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityPresenter;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity.SplashActivityMvpView;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity.SplashActivityPresenter;
 
 import javax.inject.Singleton;
 
@@ -30,7 +36,6 @@ public class DaggerModule {
 
     private Context context;
 
-
     public DaggerModule(Application app) {
         this.context = app;
     }
@@ -41,6 +46,8 @@ public class DaggerModule {
     Context providesContext() {
         return context;
     }
+
+
 
     @Provides
     @Singleton
@@ -74,5 +81,13 @@ public class DaggerModule {
     RegisterService provideRegisterService(){
         return new RegisterServiceImp();
     }
+
+
+    @Provides
+    @Singleton
+    MainActivityMvpPresenter<MainActivityMvpView> provideMainActivityPresenter(MainActivityPresenter<MainActivityMvpView> presenter){
+        return presenter;
+    }
+
 
 }

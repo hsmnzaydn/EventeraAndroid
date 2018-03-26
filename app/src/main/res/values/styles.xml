@@ -28,8 +28,6 @@
     </style>
 
 
-
-
     <style name="RowCardViewStyle" parent="CardView">
         <item name="android:layout_marginBottom">3dp</item>
         <item name="android:layout_marginLeft">5dp</item>
@@ -44,7 +42,6 @@
         <item name="android:background">@drawable/background_edit_text</item>
         <item name="android:textCursorDrawable">@drawable/edittext_cursor_color</item>
     </style>
-
 
 
     <style name="DialogTitleTextView">
@@ -79,6 +76,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
     </style>
+
     <style name="TitleSmall">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
@@ -110,6 +108,7 @@
         <item name="android:layout_height">35dp</item>
         <item name="android:layout_gravity">center</item>
     </style>
+
     <style name="RegisterEditText">
         <item name="android:textSize">15sp</item>
         <item name="android:backgroundTint">@color/transparent</item>
@@ -126,4 +125,13 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

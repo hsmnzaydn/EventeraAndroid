@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.RegisterActivity.RegisterActivity" />
-        <activity android:name=".ui.RegisterActivityStepTwo.RegisterActivityStepTwo"></activity>
+        <activity android:name=".ui.RegisterActivityStepTwo.RegisterActivityStepTwo" />
+        <activity android:name=".ui.MainActivity.MainActivity"></activity>
     </application>
 
 </manifest>

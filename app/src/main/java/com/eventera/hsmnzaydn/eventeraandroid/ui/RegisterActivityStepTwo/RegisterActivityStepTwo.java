@@ -12,7 +12,9 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
 import com.eventera.hsmnzaydn.eventeraandroid.eventbus.RegisterObjectEvent;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.Adapters.CategoryListRecyclerViewAdapter;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.BaseActivity;
+import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -25,7 +27,6 @@ import javax.inject.Inject;
 
 import butterknife.BindString;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class RegisterActivityStepTwo extends BaseActivity implements RegisterActivityTwoStepTwoMvpView {
@@ -42,6 +43,8 @@ public class RegisterActivityStepTwo extends BaseActivity implements RegisterAct
 
     RegisterObject registerObject;
     CategoryListRecyclerViewAdapter adapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +83,6 @@ public class RegisterActivityStepTwo extends BaseActivity implements RegisterAct
 
     @Override
     public void openMainActivity() {
-
+        Utils.changeActivity(this, MainActivity.class);
     }
 }

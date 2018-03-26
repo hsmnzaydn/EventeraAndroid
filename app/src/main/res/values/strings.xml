@@ -80,6 +80,8 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
 
     <!-- Titles -->
     <string name="title_register">Register</string>
+    <string name="title_event">Events</string>
+
     <!-- TabIconName -->
     <string name="tab_icon_home_name">Main</string>
     <string name="tab_icon_map_name">Map</string>
@@ -99,11 +101,7 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
 
 
     <!-- Empty -->
-    <string name="empty_reservation_list">There is no reservation</string>
     <string name="empty_event_list">There is no event</string>
-    <string name="empty_shuttle_list">There is no shuttle</string>
-    <string name="empty_notification_list">There is no notification</string>
-    <string name="empty_poi_list">There is no poi</string>
 
 
     <!-- Setting -->
@@ -117,10 +115,17 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
     <string name="dialog_open_one_april">This service available soon...</string>
 
 
+
     <!-- Description -->
     <string name="reservation_accepted">Accepted</string>
     <string name="route_of_place">Route Of Place</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 
 </resources>
