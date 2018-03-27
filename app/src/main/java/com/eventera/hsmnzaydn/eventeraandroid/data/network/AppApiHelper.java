@@ -2,11 +2,14 @@ package com.eventera.hsmnzaydn.eventeraandroid.data.network;
 
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interests;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.RegisterService;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplicationService;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -35,4 +38,11 @@ public class AppApiHelper implements ApiHelper {
     public void register(RegisterObject registerObject, ServiceCallback<RegisterResponse> callback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
         registerService.register(registerObject,callback,commonResponseServiceCallback);
     }
+
+    @Override
+    public void getListOfInterests(ServiceCallback<List<Interests>> callback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        registerService.getListOfInterests(callback,commonResponseServiceCallback);
+    }
+
+
 }

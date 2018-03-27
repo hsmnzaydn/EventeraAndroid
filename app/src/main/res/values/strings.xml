@@ -80,6 +80,7 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
 
     <!-- Titles -->
     <string name="title_register">Register</string>
+    <string name="title_register_interests">Select your interests</string>
     <string name="title_event">Events</string>
 
     <!-- TabIconName -->

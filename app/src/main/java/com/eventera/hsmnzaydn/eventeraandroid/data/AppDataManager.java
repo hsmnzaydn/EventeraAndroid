@@ -2,10 +2,13 @@ package com.eventera.hsmnzaydn.eventeraandroid.data;
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiHelper;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interests;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
 import com.eventera.hsmnzaydn.eventeraandroid.data.pref.PrefHelper;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -51,5 +54,10 @@ public class AppDataManager implements DataManager {
     @Override
     public void register(RegisterObject registerObject, ServiceCallback<RegisterResponse> callback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
         apiHelper.register(registerObject,callback,commonResponseServiceCallback);
+    }
+
+    @Override
+    public void getListOfInterests(ServiceCallback<List<Interests>> callback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        apiHelper.getListOfInterests(callback,commonResponseServiceCallback);
     }
 }

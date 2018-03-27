@@ -68,7 +68,7 @@ public class CategoryListRecyclerViewAdapter extends RecyclerView.Adapter<Catego
         public void setData(final Interests item) {
             this.item = item;
             // TODO set data to view
-            textView.setText(item.getName());
+            textView.setText(item.getIntesrestname());
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

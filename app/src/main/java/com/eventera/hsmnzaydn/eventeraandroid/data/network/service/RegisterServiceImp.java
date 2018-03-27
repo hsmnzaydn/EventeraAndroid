@@ -4,9 +4,11 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiClient;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiInterface;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.NetworkError;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interests;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterResponse;
-import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -32,6 +34,7 @@ public class RegisterServiceImp implements RegisterService{
 
     @Override
     public void register(final RegisterObject registerObject, final ServiceCallback<RegisterResponse> callback, final ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+
         apiService.register(registerObject).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .onErrorResumeNext(new Func1<Throwable, Observable<? extends RegisterResponse>>() {
@@ -61,4 +64,38 @@ public class RegisterServiceImp implements RegisterService{
                     }
                 });
     }
+
+    @Override
+    public void getListOfInterests(final ServiceCallback<List<Interests>> callback, final ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        apiService.getListOfInterests().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .onErrorResumeNext(new Func1<Throwable, Observable<? extends List<Interests>>>() {
+                    @Override
+                    public Observable<? extends List<Interests>> call(Throwable throwable) {
+
+                        return Observable.error(throwable);
+                    }
+                })
+                .subscribe(new Subscriber<List<Interests>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                        new NetworkError(e).response(commonResponseServiceCallback);
+
+                    }
+
+                    @Override
+                    public void onNext(List<Interests> listOfCategory) {
+                        callback.onResponse(listOfCategory);
+
+                    }
+                });
+    }
+
+
 }

@@ -4,15 +4,27 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Interests {
-    @Expose
-    @SerializedName("name")
-    private String name;
 
-    public String getName() {
-        return name;
+    @Expose
+    @SerializedName("intesrestName")
+    private String ıntesrestname;
+    @Expose
+    @SerializedName("interestId")
+    private String ınterestıd;
+
+    public String getIntesrestname() {
+        return ıntesrestname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIntesrestname(String ıntesrestname) {
+        this.ıntesrestname = ıntesrestname;
+    }
+
+    public String getInterestıd() {
+        return ınterestıd;
+    }
+
+    public void setInterestıd(String ınterestıd) {
+        this.ınterestıd = ınterestıd;
     }
 }
