@@ -4,6 +4,8 @@ package com.eventera.hsmnzaydn.eventeraandroid.di;
 
 import android.app.Activity;
 
+import com.eventera.hsmnzaydn.eventeraandroid.ui.DialogPopup.PopupFragment;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.EventListActivity.EventListActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityMvpPresenter;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityMvpView;
@@ -27,4 +29,6 @@ public interface DaggerComponent {
 
     void inject(RegisterActivityStepTwo registerActivityStepTwo);
     void inject(MainActivity mainActivity);
+    void inject(PopupFragment popupFragment);
+    void inject(EventListActivity eventListActivity);
 }

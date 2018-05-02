@@ -2,9 +2,11 @@ package com.eventera.hsmnzaydn.eventeraandroid.data.network;
 
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interests;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterResponse;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.EventService;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.RegisterService;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplicationService;
@@ -22,10 +24,12 @@ public class AppApiHelper implements ApiHelper {
 
     private StartApplicationService startApplicationService;
     private RegisterService registerService;
+    private EventService eventService;
 
     @Inject
-    public AppApiHelper(StartApplicationService startApplicationService,RegisterService registerService) {
+    public AppApiHelper(StartApplicationService startApplicationService,RegisterService registerService, EventService eventService) {
         this.startApplicationService = startApplicationService;
+        this.eventService=eventService;
         this.registerService=registerService;
     }
 
@@ -45,4 +49,13 @@ public class AppApiHelper implements ApiHelper {
     }
 
 
+    @Override
+    public void getEventList(ServiceCallback<List<Event>> listOfEvent, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+            eventService.getEventList(listOfEvent,commonResponseServiceCallback);
+    }
+
+    @Override
+    public void attendToEvent(String id, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        eventService.attendToEvent(id,commonResponseServiceCallback);
+    }
 }

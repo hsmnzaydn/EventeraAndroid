@@ -23,6 +23,7 @@
     <string name="tollbar_search">Search</string>
     <string name="tollbar_setting">Setting</string>
 
+    <string name="attend">Attend</string>
 
     <string name="tr" translatable="false">tr</string>
     <string name="en" translatable="false">en</string>
@@ -114,7 +115,6 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
     <string name="row_reservations_statement">Statement:</string>
     <string name="Error_fill_otp">Please fill all area</string>
     <string name="dialog_open_one_april">This service available soon...</string>
-
 
 
     <!-- Description -->

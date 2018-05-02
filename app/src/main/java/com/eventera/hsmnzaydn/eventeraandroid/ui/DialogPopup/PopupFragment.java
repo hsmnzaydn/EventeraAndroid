@@ -13,8 +13,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.eventera.hsmnzaydn.eventeraandroid.R;
+import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
+import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
+import com.eventera.hsmnzaydn.eventeraandroid.eventbus.EventShare;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.EventListActivity.EventListActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.BaseDialog;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 
@@ -22,18 +26,23 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import javax.inject.Inject;
+
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.internal.Util;
 
 /**
  * Created by hsmnzaydn on 29.01.2018.
  */
 
 public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
+
     private View root;
 
-    public static final String TAG="PopupFragment";
+    public static final String TAG = "PopupFragment";
 
     private PopupFragmentPresenter dialogFragmentPresenter;
 
@@ -51,6 +60,9 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
         TYPE=3;
          - FUNCTION 1= SHOW A POPUP WHEN CLICK USER WRITE TO EDITTEXT AND PRESS SEND IT'LL POST TO RESERVATION REASON
 
+        TYPE=4;
+         - FUNCTION 1= SHOW A POPUP WHEN CLICK SHOW IT'LL OPEN NOTIFICATION FRAGMENT
+                                    WHEN CLICK CANCEL IT'LL CLOSE POPUP
 
 
      */
@@ -58,14 +70,12 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
     private int dialogType;
     private int dialogFunction;
 
-   //DİALOG TYPE ONE IT SHOW ONLY INFORMATION
+    //DİALOG TYPE ONE IT SHOW ONLY INFORMATION
     @BindView(R.id.dialog_type_one)
     LinearLayout dialogTypeOne;
 
     @BindView(R.id.dialog_type_one_title)
     TextView dialogTypeOneTextView;
-
-
 
 
     //DİALOG TYPE TWO IT GIVE A CHANGE TO USER
@@ -81,7 +91,6 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
 
     @BindView(R.id.dialog_type_two_cancel_button)
     Button dialogTypeTwoCancelButton;
-
 
 
     //DİALOG TYPE THREE IT TAKE AN INPUT
@@ -101,10 +110,32 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
     @BindView(R.id.dialog_type_three_cancel_button)
     Button dialogTypeThreeCancelButton;
     //UpdateAvailable Status
-     //   private UpdateAvailable updateAvailable;
+    //   private UpdateAvailable updateAvailable;
 
+    // ONE TEXT 2 CHOOSE
+    @BindView(R.id.dialog_type_four_title_text_view)
+    TextView dialogTypeFourTitleTextView;
+    @BindView(R.id.dialog_type_four_detail_text_view)
+    TextView dialogTypeFourDetailTextView;
+    @BindView(R.id.dialog_type_four_location_text_view)
+    TextView dialogTypeFourLocationTextView;
+    @BindView(R.id.dialog_type_four_category_text_view)
+    TextView dialogTypeFourCategoryTextView;
+    @BindView(R.id.dialog_type_four_cancel_button)
+    Button dialogTypeFourCancelButton;
+    @BindView(R.id.dialog_type_four_send_button)
+    Button dialogTypeFourSendButton;
+    @BindView(R.id.dialog_type_four)
+    LinearLayout dialogTypeFour;
 
-        private int reservationId;
+    private int reservationId;
+    Event event;
+
+    @BindString(R.string.attend)
+    String attend;
+
+    @Inject
+    DataManager dataManager;
     public static PopupFragment newInstance() {
         PopupFragment fragment = new PopupFragment();
         Bundle bundle = new Bundle();
@@ -120,12 +151,12 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
 
         setUnBinder(ButterKnife.bind(this, root));
         EventBus.getDefault().register(this);
+        ((DaggerApplication) getActivity().getApplication()).getDaggerComponent().inject(this);
 
-        dialogFragmentPresenter=new PopupFragmentPresenter(getActivity());
+        dialogFragmentPresenter = new PopupFragmentPresenter(getActivity(),dataManager);
         dialogFragmentPresenter.onAttach(this);
 
-
-        if(dialogType == 1 && dialogFunction == 1){
+        if (dialogType == 1 && dialogFunction == 1) {
             dialogTypeOne.setVisibility(View.VISIBLE);
             dialogTypeOneTextView.setText(getActivity().getString(R.string.popup_type_one_title));
         }
@@ -142,23 +173,29 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
 
 
         }*/
-        if(dialogType == 2 && dialogFunction == 2){
+        if (dialogType == 2 && dialogFunction == 2) {
             dialogTypeTwo.setVisibility(View.VISIBLE);
             dialogTypeTwoOkButton.setText(getActivity().getString(R.string.popup_type_two_show_notification));
             dialogTypeTwoCancelButton.setText(getActivity().getString(R.string.cancel));
             dialogTypeTwoTextView.setText(getActivity().getString(R.string.popup_type_two_notification));
 
 
-
         }
 
 
-        if(dialogType== 3 && dialogFunction ==1){
+        if (dialogType == 3 && dialogFunction == 1) {
             dialogTypeThree.setVisibility(View.VISIBLE);
             dialogTypeThreeTextView.setText(getString(R.string.row_reservation_reason_hint));
             dialogTypeThreeButton.setText(getString(R.string.send));
         }
 
+        if (dialogType == 4 && dialogFunction == 1) {
+            dialogTypeFour.setVisibility(View.VISIBLE);
+            dialogTypeFourSendButton.setText(attend);
+            dialogTypeFourTitleTextView.setText(event.getEventname());
+            dialogTypeFourLocationTextView.setText(event.getEventlocation());
+            dialogTypeFourDetailTextView.setText(event.getEventdescription());
+        }
 
 
         return root;
@@ -167,43 +204,43 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
 
 
     @OnClick(R.id.dialog_type_one_ok_button)
-    public void clickToOkButton(){
-        switch (dialogFunction){
+    public void clickToOkButton() {
+        switch (dialogFunction) {
             case 1:
                 getActivity().finish();
-              //  Utils.changeActivity(getActivity(), MainActivity.class);
+                //  Utils.changeActivity(getActivity(), MainActivity.class);
                 break;
         }
 
     }
 
     @OnClick(R.id.dialog_type_two_ok_button)
-    public void clickToOkButtonOfTypeTwo(){
-        switch (dialogFunction){
+    public void clickToOkButtonOfTypeTwo() {
+        switch (dialogFunction) {
             case 1:
-               // Utils.openLink(getActivity(),updateAvailable.getLink());
+                // Utils.openLink(getActivity(),updateAvailable.getLink());
                 break;
             case 2:
-                 break;
+                break;
         }
 
     }
 
     @OnClick(R.id.dialog_type_two_cancel_button)
-    public void clickToCancelButtonOfTypeTwo(){
-        switch (dialogFunction){
+    public void clickToCancelButtonOfTypeTwo() {
+        switch (dialogFunction) {
             case 1:
-              //  Utils.changeActivity(getActivity(),MainActivity.class);
+                //  Utils.changeActivity(getActivity(),MainActivity.class);
                 break;
             case 2:
-                 dismiss();
+                dismiss();
         }
     }
 
 
     @OnClick(R.id.dialog_type_three_send_button)
-    public void clickToSendButtonOfTypeThree(){
-        switch (dialogFunction){
+    public void clickToSendButtonOfTypeThree() {
+        switch (dialogFunction) {
             case 1:
              /*   ReservationRequest reservationRequest=new ReservationRequest();
                 reservationRequest.setStatus("DECLINED");
@@ -214,11 +251,10 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
         }
 
 
-
     }
 
     @OnClick(R.id.dialog_type_three_cancel_button)
-    public void cancelButtonOfTypeThree(){
+    public void cancelButtonOfTypeThree() {
         dismiss();
     }
 
@@ -226,13 +262,12 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
     protected void setUp(View view) {
 
     }
+
     public void show(FragmentManager fragmentManager, int type, int function) {
         super.show(fragmentManager, TAG);
-        dialogType=type;
-        dialogFunction=function;
+        dialogType = type;
+        dialogFunction = function;
     }
-
-
 
 
     @Override
@@ -259,6 +294,39 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
         });
     }
 
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+    }
+
+    @OnClick({R.id.dialog_type_four_cancel_button, R.id.dialog_type_four_send_button})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.dialog_type_four_cancel_button:
+                dismiss();
+                break;
+            case R.id.dialog_type_four_send_button:
+                dialogFragmentPresenter.attendToEvent(event.getId());
+                break;
+        }
+    }
+
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void getEventObject(EventShare eventShare) {
+        event = eventShare.getEvent();
+        EventBus.getDefault().unregister(this);
+
+    }
+
+
+
+    @Override
+    public void openEventListActivity() {
+        Utils.changeActivity(getActivity(), EventListActivity.class);
+    }
 
 
 }

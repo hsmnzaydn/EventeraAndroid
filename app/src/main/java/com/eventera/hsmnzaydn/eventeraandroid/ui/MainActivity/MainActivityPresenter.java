@@ -4,8 +4,13 @@ import android.app.Activity;
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
 
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.EventService;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.EventServiceImp;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.BasePresenter;
+import com.eventera.hsmnzaydn.eventeraandroid.utility.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +38,36 @@ public class MainActivityPresenter <V extends MainActivityMvpView> extends BaseP
 
     @Override
     public void getSpecificEventList() {
-        List<Event> eventList=new ArrayList<>();
-        Event event=new Event();
-        event.setName("Test");
-        event.setCategoryName("text");
-        event.setStartTime("1522066417");
-        eventList.add(event);
-        getMvpView().LoadDataSpecificsEvent(eventList);
+        getMvpView().showLoading();
+
+
+        dataManager.getEventList(new ServiceCallback<List<Event>>() {
+            @Override
+            public void onResponse(List<Event> response) {
+                getMvpView().LoadDataSpecificsEvent(response);
+                getMvpView().dissmisLoading();
+            }
+
+            @Override
+            public void onError(String message) {
+                getMvpView().showError(message);
+                getMvpView().dissmisLoading();
+            }
+        }, new ServiceCallback<CommonResponse>() {
+            @Override
+            public void onResponse(CommonResponse response) {
+                getMvpView().showError(response.getMessage());
+                getMvpView().dissmisLoading();
+            }
+
+            @Override
+            public void onError(String message) {
+                getMvpView().showError(message);
+                getMvpView().dissmisLoading();
+            }
+        });
+
+
+
     }
 }

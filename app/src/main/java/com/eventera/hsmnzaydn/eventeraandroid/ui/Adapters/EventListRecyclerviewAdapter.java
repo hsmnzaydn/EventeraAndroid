@@ -11,6 +11,7 @@ import com.eventera.hsmnzaydn.eventeraandroid.R;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -60,16 +61,15 @@ public class EventListRecyclerviewAdapter extends RecyclerView.Adapter<EventList
             super(itemView);
             itemView.setOnClickListener(this);
             title=itemView.findViewById(R.id.row_event_title_text_view);
-            time=itemView.findViewById(R.id.row_event_time_text_view);
             category=itemView.findViewById(R.id.row_event_category_name);
             // TODO instantiate/assign view members
         }
 
         public void setData(Event item) {
             this.item = item;
-            title.setText(item.getName());
-            time.setText(Utils.longToddMMyyyy(Long.parseLong(item.getStartTime())));
-            category.setText(item.getCategoryName());
+            title.setText(item.getEventname());
+           // time.setText(Utils.longToddMMyyyy(Long.parseLong(item.getEventendtime())));
+            category.setText(item.getEventcategoryname());
             // TODO set data to view
         }
 
@@ -79,6 +79,13 @@ public class EventListRecyclerviewAdapter extends RecyclerView.Adapter<EventList
                 myListener.onItemClick(item);
             }
         }
+    }
+
+    public void setFilter(ArrayList<Event> newList){
+
+        myItems=new ArrayList<>();
+        myItems.addAll(newList);
+        notifyDataSetChanged();
     }
 
 

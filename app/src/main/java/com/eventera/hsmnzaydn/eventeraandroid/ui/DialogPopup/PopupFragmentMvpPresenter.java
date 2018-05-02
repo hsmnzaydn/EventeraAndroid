@@ -9,5 +9,6 @@ import com.eventera.hsmnzaydn.eventeraandroid.ui.base.MvpPresenter;
  */
 
 public interface PopupFragmentMvpPresenter<V extends DialogMvpView> extends MvpPresenter<V> {
+    void attendToEvent(String id);
 
 }

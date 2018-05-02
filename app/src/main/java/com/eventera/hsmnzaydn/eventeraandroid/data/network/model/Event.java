@@ -1,5 +1,10 @@
 package com.eventera.hsmnzaydn.eventeraandroid.data.network.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 /**
  * Created by hsmnzaydn on 26.03.2018.
  */
@@ -7,58 +12,92 @@ package com.eventera.hsmnzaydn.eventeraandroid.data.network.model;
 public class Event {
 
 
-    private String name;
-    private String description;
-    private String startTime;
-    private String endTime;
-    private String categoryName;
-    private String location;
+    @Expose
+    @SerializedName("__v")
+    private int V;
+    @Expose
+    @SerializedName("eventLocation")
+    private String eventlocation;
+    @Expose
+    @SerializedName("eventCategoryName")
+    private String eventcategoryname;
+    @Expose
+    @SerializedName("eventEndTime")
+    private String eventendtime;
+    @Expose
+    @SerializedName("eventDescription")
+    private String eventdescription;
+    @Expose
+    @SerializedName("eventName")
+    private String eventname;
+    @Expose
+    @SerializedName("_id")
+    private String Id;
+    @Expose
+    @SerializedName("wallEntryList")
+    private List<String> wallentrylist;
 
-    public String getName() {
-        return name;
+    public int getV() {
+        return V;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setV(int V) {
+        this.V = V;
     }
 
-    public String getDescription() {
-        return description;
+    public String getEventlocation() {
+        return eventlocation;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setEventlocation(String eventlocation) {
+        this.eventlocation = eventlocation;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getEventcategoryname() {
+        return eventcategoryname;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public void setEventcategoryname(String eventcategoryname) {
+        this.eventcategoryname = eventcategoryname;
     }
 
-    public String getEndTime() {
-        return endTime;
+    public String getEventendtime() {
+        return eventendtime;
     }
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
+    public void setEventendtime(String eventendtime) {
+        this.eventendtime = eventendtime;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getEventdescription() {
+        return eventdescription;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setEventdescription(String eventdescription) {
+        this.eventdescription = eventdescription;
     }
 
-    public String getLocation() {
-        return location;
+    public String getEventname() {
+        return eventname;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setEventname(String eventname) {
+        this.eventname = eventname;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String Id) {
+        this.Id = Id;
+    }
+
+    public List<String> getWallentrylist() {
+        return wallentrylist;
+    }
+
+    public void setWallentrylist(List<String> wallentrylist) {
+        this.wallentrylist = wallentrylist;
     }
 }

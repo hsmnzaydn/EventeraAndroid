@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".ui.RegisterActivity.RegisterActivity" />
         <activity android:name=".ui.RegisterActivityStepTwo.RegisterActivityStepTwo" />
-        <activity android:name=".ui.MainActivity.MainActivity"></activity>
+        <activity android:name=".ui.MainActivity.MainActivity" />
+        <activity android:name=".ui.EventListActivity.EventListActivity"></activity>
     </application>
 
 </manifest>

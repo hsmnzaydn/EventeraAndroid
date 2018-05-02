@@ -8,5 +8,5 @@ import com.eventera.hsmnzaydn.eventeraandroid.ui.base.DialogMvpView;
  */
 
 public interface PopupFragmentMvpView extends DialogMvpView {
-
+    void openEventListActivity();
 }

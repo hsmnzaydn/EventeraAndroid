@@ -6,25 +6,25 @@ import com.google.gson.annotations.SerializedName;
 public class Interests {
 
     @Expose
-    @SerializedName("intesrestName")
-    private String ıntesrestname;
+    @SerializedName("id")
+    private String id;
     @Expose
-    @SerializedName("interestId")
-    private String ınterestıd;
+    @SerializedName("name")
+    private String name;
 
     public String getIntesrestname() {
-        return ıntesrestname;
+        return id;
     }
 
     public void setIntesrestname(String ıntesrestname) {
-        this.ıntesrestname = ıntesrestname;
+        this.id = ıntesrestname;
     }
 
     public String getInterestıd() {
-        return ınterestıd;
+        return name;
     }
 
     public void setInterestıd(String ınterestıd) {
-        this.ınterestıd = ınterestıd;
+        this.name = ınterestıd;
     }
 }
