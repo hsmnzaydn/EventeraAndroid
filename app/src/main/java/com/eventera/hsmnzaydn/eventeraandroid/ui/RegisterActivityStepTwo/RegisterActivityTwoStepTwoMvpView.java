@@ -1,6 +1,6 @@
 package com.eventera.hsmnzaydn.eventeraandroid.ui.RegisterActivityStepTwo;
 
-import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interests;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.MvpView;
 
 import java.util.List;
@@ -11,5 +11,5 @@ import java.util.List;
 
 public interface RegisterActivityTwoStepTwoMvpView extends MvpView {
     void openMainActivity();
-    void loadDataToRecylerview(List<Interests> categoryList);
+    void loadDataToRecylerview(List<Interesting> categoryList);
 }

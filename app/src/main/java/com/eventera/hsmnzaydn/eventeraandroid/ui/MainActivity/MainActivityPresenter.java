@@ -70,4 +70,32 @@ public class MainActivityPresenter <V extends MainActivityMvpView> extends BaseP
 
 
     }
+
+    @Override
+    public void attend(Event event) {
+        getMvpView().showLoading();
+
+        dataManager.isAttend(event.getId(), new ServiceCallback<CommonResponse>() {
+            @Override
+            public void onResponse(CommonResponse response) {
+                if(response.getCode() == Constant.SUCCESS_CODE){
+                    getMvpView().openWallEntryListActivity();
+                }
+                else if(response.getCode() == Constant.UNREGISTER_CODE){
+                    getMvpView().openPopup();
+                }
+                else {
+                    getMvpView().showError(response.getMessage());
+                }
+                getMvpView().dissmisLoading();
+
+            }
+
+            @Override
+            public void onError(String message) {
+                getMvpView().showError(message);
+                getMvpView().dissmisLoading();
+            }
+        });
+    }
 }

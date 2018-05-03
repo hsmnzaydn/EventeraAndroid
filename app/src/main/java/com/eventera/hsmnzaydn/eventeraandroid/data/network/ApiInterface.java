@@ -3,7 +3,7 @@ package com.eventera.hsmnzaydn.eventeraandroid.data.network;
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
-import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interests;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.WallEntry;
@@ -25,7 +25,7 @@ public interface ApiInterface {
     Observable<RegisterResponse> register(@Body RegisterObject registerObject);
 
     @GET("registration/categories")
-    Observable<List<Interests>> getListOfInterests();
+    Observable<List<Interesting>> getListOfInterests();
 
 
     @GET("secure/events")
@@ -36,4 +36,10 @@ public interface ApiInterface {
 
     @GET("secure/events/{id}/wallEntries")
     Observable<List<WallEntry>> getWallEntries(@Path("id") String id);
+
+    @POST("secure/events/{id}")
+    Observable<CommonResponse> postWallEntry(@Path("id") String id, @Body WallEntry wallEntry);
+
+    @GET("secure/events/{id}/isAttend")
+    Observable<CommonResponse> isAttend(@Path("id") String id);
 }

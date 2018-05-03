@@ -10,7 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.eventera.hsmnzaydn.eventeraandroid.R;
-import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interests;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +18,10 @@ import java.util.List;
 
 public class CategoryListRecyclerViewAdapter extends RecyclerView.Adapter<CategoryListRecyclerViewAdapter.ViewHolder> {
 
-    private List<Interests> myItems;
-    private List<Interests> selectedItems=new ArrayList<Interests>();
+    private List<Interesting> myItems;
+    private List<Interesting> selectedItems=new ArrayList<Interesting>();
 
-    public CategoryListRecyclerViewAdapter(List<Interests> items) {
+    public CategoryListRecyclerViewAdapter(List<Interesting> items) {
         myItems = items;
     }
 
@@ -47,13 +47,13 @@ public class CategoryListRecyclerViewAdapter extends RecyclerView.Adapter<Catego
     }
 
 
-    public List<Interests> getSelectedItems(){
+    public List<Interesting> getSelectedItems(){
         return selectedItems;
     }
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // TODO - Your view members
-        public Interests item;
+        public Interesting item;
         TextView textView;
         CheckBox checkBox;
 
@@ -65,10 +65,10 @@ public class CategoryListRecyclerViewAdapter extends RecyclerView.Adapter<Catego
             // TODO instantiate/assign view members
         }
 
-        public void setData(final Interests item) {
+        public void setData(final Interesting item) {
             this.item = item;
             // TODO set data to view
-            textView.setText(item.getIntesrestname());
+            textView.setText(item.getName());
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

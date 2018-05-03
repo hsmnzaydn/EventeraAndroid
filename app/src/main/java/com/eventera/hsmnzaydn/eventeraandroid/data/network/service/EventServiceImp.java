@@ -7,6 +7,7 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.WallEntry;
+import com.eventera.hsmnzaydn.eventeraandroid.utility.Constant;
 
 import java.util.List;
 
@@ -120,4 +121,67 @@ public class EventServiceImp implements EventService{
             }
         });
     }
+
+    @Override
+    public void postWallEntries(String id, WallEntry wallEntry, final ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        apiService.postWallEntry(id,wallEntry).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .onErrorResumeNext(new Func1<Throwable, Observable<? extends CommonResponse>>() {
+                    @Override
+                    public Observable<? extends CommonResponse> call(Throwable throwable) {
+                        return null;
+                    }
+                }).subscribe(new Subscriber<CommonResponse>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+                new NetworkError(e).response(commonResponseServiceCallback);
+
+            }
+
+            @Override
+            public void onNext(CommonResponse commonResponse) {
+                commonResponseServiceCallback.onResponse(commonResponse);
+
+            }
+        });
+    }
+
+    @Override
+    public void isAttend(String id, final ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        apiService.isAttend(id).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .onErrorResumeNext(new Func1<Throwable, Observable<? extends CommonResponse>>() {
+                    @Override
+                    public Observable<? extends CommonResponse> call(Throwable throwable) {
+                        return null;
+                    }
+                }).subscribe(new Subscriber<CommonResponse>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+                CommonResponse commonResponse=new CommonResponse();
+                commonResponse.setCode(Constant.UNREGISTER_CODE);
+                commonResponse.setMessage("This user is not register");
+                commonResponseServiceCallback.onResponse(commonResponse);
+            }
+
+            @Override
+            public void onNext(CommonResponse commonResponse) {
+                commonResponseServiceCallback.onResponse(commonResponse);
+
+            }
+        });
+    }
+
 }

@@ -22,8 +22,8 @@ public class Postedby {
     @SerializedName("location")
     private String location;
     @Expose
-    @SerializedName("job")
-    private String job;
+    @SerializedName("name")
+    private String name;
     @Expose
     @SerializedName("udid")
     private String udid;
@@ -77,12 +77,12 @@ public class Postedby {
         this.location = location;
     }
 
-    public String getJob() {
-        return job;
+    public String getName() {
+        return name;
     }
 
-    public void setJob(String job) {
-        this.job = job;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUdid() {

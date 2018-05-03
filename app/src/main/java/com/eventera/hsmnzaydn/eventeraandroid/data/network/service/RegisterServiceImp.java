@@ -4,7 +4,7 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiClient;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiInterface;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.NetworkError;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
-import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interests;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterResponse;
 
@@ -66,17 +66,17 @@ public class RegisterServiceImp implements RegisterService{
     }
 
     @Override
-    public void getListOfInterests(final ServiceCallback<List<Interests>> callback, final ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+    public void getListOfInterests(final ServiceCallback<List<Interesting>> callback, final ServiceCallback<CommonResponse> commonResponseServiceCallback) {
         apiService.getListOfInterests().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .onErrorResumeNext(new Func1<Throwable, Observable<? extends List<Interests>>>() {
+                .onErrorResumeNext(new Func1<Throwable, Observable<? extends List<Interesting>>>() {
                     @Override
-                    public Observable<? extends List<Interests>> call(Throwable throwable) {
+                    public Observable<? extends List<Interesting>> call(Throwable throwable) {
 
                         return Observable.error(throwable);
                     }
                 })
-                .subscribe(new Subscriber<List<Interests>>() {
+                .subscribe(new Subscriber<List<Interesting>>() {
                     @Override
                     public void onCompleted() {
 
@@ -90,7 +90,7 @@ public class RegisterServiceImp implements RegisterService{
                     }
 
                     @Override
-                    public void onNext(List<Interests> listOfCategory) {
+                    public void onNext(List<Interesting> listOfCategory) {
                         callback.onResponse(listOfCategory);
 
                     }

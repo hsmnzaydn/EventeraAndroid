@@ -62,7 +62,7 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
 
 
     <string name="email">E-Mail</string>
-    <string name="job">Job</string>
+    <string name="name">Name</string>
     <string name="adress">Your adress</string>
     <string name="age">Age</string>
     <string name="male">MALE</string>
@@ -104,6 +104,7 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
 
     <!-- Empty -->
     <string name="empty_event_list">There is no event</string>
+    <string name="empty_wall_entry_list">There is no wall entry</string>
 
 
     <!-- Setting -->

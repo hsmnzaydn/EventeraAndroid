@@ -33,7 +33,7 @@ public class RegisterActivityPresenter<V extends RegisterActivityMvpView> extend
             RegisterObject registerObject=new RegisterObject();
             registerObject.setAdress(adress);
             registerObject.setAge(age);
-            registerObject.setJob(job);
+            registerObject.setName(job);
             registerObject.setMail(eMail);
             registerObject.setSex(sex);
 

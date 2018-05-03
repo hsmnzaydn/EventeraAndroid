@@ -30,7 +30,7 @@ public class NetworkError extends Throwable {
         if (this.error instanceof IOException) {
             serviceCallback.onError(NETWORK_ERROR_MESSAGE);
         }
-        else if (!(this.error instanceof HttpException)) {
+         else if (!(this.error instanceof HttpException)) {
             serviceCallback.onError(DEFAULT_ERROR_MESSAGE);
         }
         else {

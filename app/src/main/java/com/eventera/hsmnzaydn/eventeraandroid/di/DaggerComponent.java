@@ -2,17 +2,12 @@ package com.eventera.hsmnzaydn.eventeraandroid.di;
 
 
 
-import android.app.Activity;
-
+import com.eventera.hsmnzaydn.eventeraandroid.ui.AddWallEntryActivity.AddWallEntryActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.DialogPopup.PopupFragment;
-import com.eventera.hsmnzaydn.eventeraandroid.ui.EventListActivity.EventListActivity;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.WallEntryListActivity.WallEntryListActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivity;
-import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityMvpPresenter;
-import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityMvpView;
-import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityPresenter;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.RegisterActivityStepTwo.RegisterActivityStepTwo;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity.SplashActivity;
-import com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity.SplashActivityPresenter;
 
 import javax.inject.Singleton;
 
@@ -30,5 +25,6 @@ public interface DaggerComponent {
     void inject(RegisterActivityStepTwo registerActivityStepTwo);
     void inject(MainActivity mainActivity);
     void inject(PopupFragment popupFragment);
-    void inject(EventListActivity eventListActivity);
+    void inject(WallEntryListActivity wallEntryListActivity);
+    void inject(AddWallEntryActivity addWallEntryActivity);
 }

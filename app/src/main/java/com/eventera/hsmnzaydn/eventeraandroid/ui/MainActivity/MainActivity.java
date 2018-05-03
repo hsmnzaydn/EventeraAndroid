@@ -14,6 +14,7 @@ import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
 import com.eventera.hsmnzaydn.eventeraandroid.eventbus.EventShare;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.Adapters.EventListRecyclerviewAdapter;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.DialogPopup.PopupFragment;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.WallEntryListActivity.WallEntryListActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.BaseActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 
@@ -27,6 +28,7 @@ import javax.inject.Inject;
 import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.internal.Util;
 
 public class MainActivity extends BaseActivity implements MainActivityMvpView,SearchView.OnQueryTextListener {
 
@@ -65,7 +67,7 @@ public class MainActivity extends BaseActivity implements MainActivityMvpView,Se
             @Override
             public void onItemClick(Event item) {
                 EventBus.getDefault().postSticky(new EventShare(item));
-                PopupFragment.newInstance().show(getSupportFragmentManager(),4,1);
+                presenter.attend(item);
             }
         };
 
@@ -80,6 +82,18 @@ public class MainActivity extends BaseActivity implements MainActivityMvpView,Se
         adapter = new EventListRecyclerviewAdapter(listOfEvent, itemListener);
         activityMainRecylerview.setLayoutManager(new LinearLayoutManager(this));
         activityMainRecylerview.setAdapter(adapter);
+    }
+
+    @Override
+    public void openWallEntryListActivity() {
+        Utils.changeActivity(this, WallEntryListActivity.class);
+
+    }
+
+    @Override
+    public void openPopup() {
+        PopupFragment.newInstance().show(getSupportFragmentManager(),4,1);
+
     }
 
     @Override

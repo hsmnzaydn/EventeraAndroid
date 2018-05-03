@@ -15,13 +15,13 @@ public class RegisterObject {
 
     @Expose
     @SerializedName("interests")
-    private List<Interests> interests;
+    private List<Interesting> interests;
     @Expose
     @SerializedName("adress")
     private String adress;
     @Expose
-    @SerializedName("job")
-    private String job;
+    @SerializedName("name")
+    private String name;
     @Expose
     @SerializedName("age")
     private String age;
@@ -33,17 +33,17 @@ public class RegisterObject {
     private String sex;
 
     public boolean emptyControll() {
-        if (getAdress().isEmpty() && getAge().isEmpty() && getJob().isEmpty() && getMail().isEmpty() && getSex().isEmpty()) {
+        if (getAdress().isEmpty() && getAge().isEmpty() && getName().isEmpty() && getMail().isEmpty() && getSex().isEmpty()) {
             return true;
         } else
             return false;
     }
 
-    public List<Interests> getInterests() {
+    public List<Interesting> getInterests() {
         return interests;
     }
 
-    public void setInterests(List<Interests> ınterests) {
+    public void setInterests(List<Interesting> ınterests) {
         this.interests = ınterests;
     }
 
@@ -55,12 +55,12 @@ public class RegisterObject {
         this.adress = adress;
     }
 
-    public String getJob() {
-        return job;
+    public String getName() {
+        return name;
     }
 
-    public void setJob(String job) {
-        this.job = job;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAge() {

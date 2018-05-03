@@ -16,5 +16,7 @@ public interface EventService {
     void getEventList(ServiceCallback<List<Event>> listOfEvent, ServiceCallback<CommonResponse> commonResponseServiceCallback);
     void attendToEvent(String id, ServiceCallback<CommonResponse> commonResponseServiceCallback);
     void getWallEntries(String id, ServiceCallback<List<WallEntry>> wallEntryListCallback, ServiceCallback<CommonResponse> commonResponseServiceCallback);
+    void postWallEntries(String id,WallEntry wallEntry,ServiceCallback<CommonResponse> commonResponseServiceCallback);
+    void isAttend(String id,ServiceCallback<CommonResponse> commonResponseServiceCallback);
 
 }

@@ -3,9 +3,10 @@ package com.eventera.hsmnzaydn.eventeraandroid.data.network;
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
-import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interests;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterResponse;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.WallEntry;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.EventService;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.RegisterService;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
@@ -44,7 +45,7 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public void getListOfInterests(ServiceCallback<List<Interests>> callback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+    public void getListOfInterests(ServiceCallback<List<Interesting>> callback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
         registerService.getListOfInterests(callback,commonResponseServiceCallback);
     }
 
@@ -57,5 +58,20 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public void attendToEvent(String id, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
         eventService.attendToEvent(id,commonResponseServiceCallback);
+    }
+
+    @Override
+    public void getWallEntries(String id, ServiceCallback<List<WallEntry>> wallEntryListCallback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        eventService.getWallEntries(id,wallEntryListCallback,commonResponseServiceCallback);
+    }
+
+    @Override
+    public void postWallEntries(String id, WallEntry wallEntry, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        eventService.postWallEntries(id,wallEntry,commonResponseServiceCallback);
+    }
+
+    @Override
+    public void isAttend(String id, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        eventService.isAttend(id,commonResponseServiceCallback);
     }
 }

@@ -11,4 +11,6 @@ import java.util.List;
 
 public interface MainActivityMvpView  extends MvpView{
     void LoadDataSpecificsEvent(List<Event> listOfEvent);
+    void openWallEntryListActivity();
+    void openPopup();
 }

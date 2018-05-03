@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.eventera.hsmnzaydn.eventeraandroid.R;
 import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
-import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interests;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
 import com.eventera.hsmnzaydn.eventeraandroid.eventbus.RegisterObjectEvent;
@@ -79,7 +79,7 @@ public class RegisterActivityStepTwo extends BaseActivity implements RegisterAct
     }
 
     @Override
-    public void loadDataToRecylerview(List<Interests> categoryList) {
+    public void loadDataToRecylerview(List<Interesting> categoryList) {
         adapter = new CategoryListRecyclerViewAdapter(categoryList);
         activityRegisterStepTwoRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         activityRegisterStepTwoRecyclerview.setAdapter(adapter);

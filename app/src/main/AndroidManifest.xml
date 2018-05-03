@@ -22,7 +22,8 @@
         <activity android:name=".ui.RegisterActivity.RegisterActivity" />
         <activity android:name=".ui.RegisterActivityStepTwo.RegisterActivityStepTwo" />
         <activity android:name=".ui.MainActivity.MainActivity" />
-        <activity android:name=".ui.EventListActivity.EventListActivity"></activity>
+        <activity android:name=".ui.WallEntryListActivity.WallEntryListActivity" />
+        <activity android:name=".ui.AddWallEntryActivity.AddWallEntryActivity"></activity>
     </application>
 
 </manifest>

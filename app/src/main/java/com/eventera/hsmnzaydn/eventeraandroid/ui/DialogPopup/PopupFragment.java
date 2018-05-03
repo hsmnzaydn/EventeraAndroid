@@ -18,7 +18,7 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
 import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
 import com.eventera.hsmnzaydn.eventeraandroid.eventbus.EventShare;
-import com.eventera.hsmnzaydn.eventeraandroid.ui.EventListActivity.EventListActivity;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.WallEntryListActivity.WallEntryListActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.BaseDialog;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 
@@ -32,7 +32,6 @@ import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.internal.Util;
 
 /**
  * Created by hsmnzaydn on 29.01.2018.
@@ -284,14 +283,18 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
     @Override
     public void onResume() {
         super.onResume();
-        dialogTypeThreeEditText.post(new Runnable() {
-            @Override
-            public void run() {
-                dialogTypeThreeEditText.requestFocus();
-                InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imgr.showSoftInput(dialogTypeThreeEditText, InputMethodManager.SHOW_IMPLICIT);
-            }
-        });
+
+        if(dialogType ==3 && dialogFunction==1) {
+            dialogTypeThreeEditText.post(new Runnable() {
+                @Override
+                public void run() {
+                    dialogTypeThreeEditText.requestFocus();
+                    InputMethodManager imgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imgr.showSoftInput(dialogTypeThreeEditText, InputMethodManager.SHOW_IMPLICIT);
+                }
+            });
+        }
+
     }
 
 
@@ -309,6 +312,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
                 break;
             case R.id.dialog_type_four_send_button:
                 dialogFragmentPresenter.attendToEvent(event.getId());
+                dismiss();
                 break;
         }
     }
@@ -325,7 +329,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
 
     @Override
     public void openEventListActivity() {
-        Utils.changeActivity(getActivity(), EventListActivity.class);
+        Utils.changeActivity(getActivity(), WallEntryListActivity.class);
     }
 
 

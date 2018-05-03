@@ -5,7 +5,7 @@ import android.app.Activity;
 import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
-import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interests;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
@@ -66,9 +66,9 @@ public class RegisterActivityStepTwoPresenter<V extends RegisterActivityTwoStepT
     public void getListOfInterests() {
         getMvpView().showLoading();
 
-        dataManager.getListOfInterests(new ServiceCallback<List<Interests>>() {
+        dataManager.getListOfInterests(new ServiceCallback<List<Interesting>>() {
             @Override
-            public void onResponse(List<Interests> response) {
+            public void onResponse(List<Interesting> response) {
 
                 getMvpView().dissmisLoading();
                 getMvpView().loadDataToRecylerview(response);
