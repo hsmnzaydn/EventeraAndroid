@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.eventera.hsmnzaydn.eventeraandroid.R;
 import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
@@ -28,7 +29,6 @@ import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.internal.Util;
 
 public class WallEntryListActivity extends BaseActivity implements WallEntryListActivityMvpView {
 
@@ -41,9 +41,12 @@ public class WallEntryListActivity extends BaseActivity implements WallEntryList
     private WallEntryListRecyclerViewAdapter adapter;
     @BindString(R.string.empty_wall_entry_list)
     String empty;
+
+
     private Event event;
     @Inject
     DataManager dataManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +62,8 @@ public class WallEntryListActivity extends BaseActivity implements WallEntryList
 
     @Override
     public void loadWallEntryList(List<WallEntry> listOfWallEntry) {
-        Utils.showEmptyTextView(this,listOfWallEntry,empty);
-        adapter = new WallEntryListRecyclerViewAdapter(listOfWallEntry, new WallEntryListRecyclerViewAdapter.ItemListener() {
+       // Utils.showEmptyTextView(this,listOfWallEntry,empty);
+        adapter = new WallEntryListRecyclerViewAdapter(this,listOfWallEntry, dataManager,new WallEntryListRecyclerViewAdapter.ItemListener() {
             @Override
             public void onItemClick(WallEntry item) {
 

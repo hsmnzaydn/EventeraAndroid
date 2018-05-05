@@ -63,13 +63,7 @@ public class MainActivity extends BaseActivity implements MainActivityMvpView,Se
         presenter.getSpecificEventList();
 
 
-        itemListener = new EventListRecyclerviewAdapter.ItemListener() {
-            @Override
-            public void onItemClick(Event item) {
-                EventBus.getDefault().postSticky(new EventShare(item));
-                presenter.attend(item);
-            }
-        };
+
 
 
     }
@@ -80,6 +74,13 @@ public class MainActivity extends BaseActivity implements MainActivityMvpView,Se
         Utils.showEmptyTextView(this,listOfEvent,empty);
         eventList=listOfEvent;
         adapter = new EventListRecyclerviewAdapter(listOfEvent, itemListener);
+        itemListener = new EventListRecyclerviewAdapter.ItemListener() {
+            @Override
+            public void onItemClick(Event item) {
+                EventBus.getDefault().postSticky(new EventShare(item));
+                presenter.attend(item);
+            }
+        };
         activityMainRecylerview.setLayoutManager(new LinearLayoutManager(this));
         activityMainRecylerview.setAdapter(adapter);
     }
@@ -118,8 +119,9 @@ public class MainActivity extends BaseActivity implements MainActivityMvpView,Se
 
         ArrayList<Event> newList=new ArrayList<>();
         for(Event event:eventList){
-            String name=event.getEventcategoryname();
-            if(name.contains(newText))
+            String name=event.getEventcategoryname().toLowerCase();
+            String eventName=event.getEventname().toLowerCase();
+            if(name.contains(newText) || eventName.contains(newText))
                 newList.add(event);
         }
 

@@ -23,7 +23,9 @@
         <activity android:name=".ui.RegisterActivityStepTwo.RegisterActivityStepTwo" />
         <activity android:name=".ui.MainActivity.MainActivity" />
         <activity android:name=".ui.WallEntryListActivity.WallEntryListActivity" />
-        <activity android:name=".ui.AddWallEntryActivity.AddWallEntryActivity"></activity>
+        <activity android:name=".ui.AddWallEntryActivity.AddWallEntryActivity" />
+        <activity android:name=".ui.CommentListActivity.CommentListActivity"
+            android:label="@string/title_comment"></activity>
     </application>
 
 </manifest>

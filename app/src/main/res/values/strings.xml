@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EventeraAndroid</string>
+    <string name="app_name">Eventera</string>
 
     <string name="Accept">Accept</string>
     <string name="Reject">Reject</string>
@@ -83,12 +83,8 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
     <string name="title_register">Register</string>
     <string name="title_register_interests">Select your interests</string>
     <string name="title_event">Events</string>
-
-    <!-- TabIconName -->
-    <string name="tab_icon_home_name">Main</string>
-    <string name="tab_icon_map_name">Map</string>
-    <string name="tab_icon_notification_name">Notification</string>
-    <string name="tab_icon_barcode_name">Entry Pass</string>
+    <string name="add_wall_entry">Add Wall Entry</string>
+    <string name="title_comment">Comments</string>
 
     <!-- MainFragment List -->
     <string name="main_fragment_events">Events</string>
@@ -126,6 +122,8 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="add_your_comment">Add your comment</string>
 
     <string name="action_settings">Settings</string>
 

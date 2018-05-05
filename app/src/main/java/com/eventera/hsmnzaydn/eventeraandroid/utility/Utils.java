@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -166,12 +167,12 @@ public class Utils {
             TextView tv1 = new TextView(activity);
             tv1.setText(text);
             tv1.setGravity(Gravity.CENTER);
-            tv1.setTextColor(activity.getResources().getColor(R.color.red));
+            tv1.setTextColor(activity.getResources().getColor(R.color.black));
             tv1.setTextSize(20);
 
             LinearLayout ll = new LinearLayout(activity);
             ll.setOrientation(LinearLayout.VERTICAL);
-            ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT));
+            ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             ll.setGravity(Gravity.CENTER);
             ll.addView(tv1);
 

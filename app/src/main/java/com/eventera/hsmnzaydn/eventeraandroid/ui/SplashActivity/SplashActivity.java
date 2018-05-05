@@ -1,6 +1,8 @@
 package com.eventera.hsmnzaydn.eventeraandroid.ui.SplashActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.eventera.hsmnzaydn.eventeraandroid.R;
 import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
@@ -24,12 +26,35 @@ public class SplashActivity extends BaseActivity implements SplashActivityMvpVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        ((DaggerApplication) getApplication()).getDaggerComponent().inject(this);
 
-        presenter=new SplashActivityPresenter(this,getApplicationContext(),dataManager);
-        presenter.startApplication();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ((DaggerApplication) getApplication()).getDaggerComponent().inject(SplashActivity.this);
+                presenter=new SplashActivityPresenter(SplashActivity.this,getApplicationContext(),dataManager);
+                presenter.startApplication();
+
+
+            }},
+         1500);
+
+
+
+
     }
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+    }
 
     @Override
     public void openMainActivity() {

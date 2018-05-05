@@ -17,7 +17,7 @@ public class WallEntry {
     private String Id;
     @Expose
     @SerializedName("comment")
-    private List<String> comment;
+    private List<Comment> comment;
     @Expose
     @SerializedName("likeCount")
     private int likecount;
@@ -28,6 +28,31 @@ public class WallEntry {
     @SerializedName("postedBy")
     private Postedby postedby;
 
+    public Boolean getLiked() {
+        return liked;
+    }
+
+    public void setLiked(Boolean liked) {
+        this.liked = liked;
+    }
+
+    @Expose
+    @SerializedName("liked")
+
+    private Boolean liked;
+
+    @Expose
+    @SerializedName("eventId")
+    private String eventId;
+
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+
     public String getId() {
         return Id;
     }
@@ -36,11 +61,11 @@ public class WallEntry {
         this.Id = Id;
     }
 
-    public List<String> getComment() {
+    public List<Comment> getComment() {
         return comment;
     }
 
-    public void setComment(List<String> comment) {
+    public void setComment(List<Comment> comment) {
         this.comment = comment;
     }
 

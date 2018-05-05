@@ -15,6 +15,8 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.RegisterServi
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.RegisterServiceImp;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplicationService;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplicationServiceImp;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.WallEntryService;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.WallEntryServiceImp;
 import com.eventera.hsmnzaydn.eventeraandroid.data.pref.AppPrefHelper;
 import com.eventera.hsmnzaydn.eventeraandroid.data.pref.PrefHelper;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityMvpPresenter;
@@ -60,8 +62,8 @@ public class DaggerModule {
 
     @Provides
     @Singleton
-    ApiHelper provideApiHelper(StartApplicationService startApplicationService, RegisterService registerService, EventService eventService){
-        return new AppApiHelper(startApplicationService,registerService,eventService);
+    ApiHelper provideApiHelper(StartApplicationService startApplicationService, RegisterService registerService, EventService eventService,WallEntryService wallEntryService){
+        return new AppApiHelper(startApplicationService,registerService,eventService,wallEntryService);
     }
 
     @Provides
@@ -89,6 +91,12 @@ public class DaggerModule {
     @Singleton
     EventService provideEventService(){
         return new EventServiceImp();
+    }
+
+    @Provides
+    @Singleton
+    WallEntryService provideWallEntryService(){
+        return new WallEntryServiceImp();
     }
 
     @Provides

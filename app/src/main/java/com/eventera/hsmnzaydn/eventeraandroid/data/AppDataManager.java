@@ -1,6 +1,7 @@
 package com.eventera.hsmnzaydn.eventeraandroid.data;
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.ApiHelper;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Comment;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
@@ -90,4 +91,18 @@ public class AppDataManager implements DataManager {
         apiHelper.isAttend(id,commonResponseServiceCallback);
     }
 
+    @Override
+    public void postComment(String eventId, String wallEntryId, Comment text, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        apiHelper.postComment(eventId,wallEntryId,text,commonResponseServiceCallback);
+    }
+
+    @Override
+    public void getCommentList(String eventId, String wallEntryId, ServiceCallback<List<Comment>> listServiceCallback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        apiHelper.getCommentList(eventId,wallEntryId,listServiceCallback,commonResponseServiceCallback);
+    }
+
+    @Override
+    public void like(String eventId, String wallEntryId) {
+        apiHelper.like(eventId,wallEntryId);
+    }
 }

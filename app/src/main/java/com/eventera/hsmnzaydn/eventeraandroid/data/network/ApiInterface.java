@@ -1,6 +1,7 @@
 package com.eventera.hsmnzaydn.eventeraandroid.data.network;
 
 
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Comment;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
@@ -42,4 +43,15 @@ public interface ApiInterface {
 
     @GET("secure/events/{id}/isAttend")
     Observable<CommonResponse> isAttend(@Path("id") String id);
+
+    @POST("secure/events/{eventId}/wallEntry/{wallEntryId}/comments")
+    Observable<CommonResponse> postComment(@Path("eventId") String eventId,@Path("wallEntryId") String wallEntryId, @Body Comment text);
+
+
+    @GET("secure/events/{eventId}/wallEntry/{wallEntryId}/comments")
+    Observable<List<Comment>> getCommentList(@Path("eventId") String eventId,@Path("wallEntryId") String wallEntryId);
+
+    @GET("secure/events/{eventId}/wallEntry/{wallEntryId}/like")
+    Observable<CommonResponse> likeToWallEntry(@Path("eventId") String eventId,@Path("wallEntryId") String wallEntryId);
+
 }

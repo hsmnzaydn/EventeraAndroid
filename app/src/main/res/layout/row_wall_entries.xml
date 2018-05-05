@@ -41,9 +41,10 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="2dp"
                 android:text="sakldjaskljdklajskjsakldjlka"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:id="@+id/row_wall_entries_content_text_view"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/row_wall_entries_content_text_view"
+                android:layout_marginBottom="3dp"/>
 
 
             <LinearLayout
@@ -59,7 +60,19 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_marginLeft="5dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_like_count"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
             <TextView
+                android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
                 android:id="@+id/row_wall_entries_like_count_text_view"
@@ -67,10 +80,53 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Beğenme sayısı" />
+
+            </LinearLayout>
             <LinearLayout
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+           <LinearLayout
+               android:visibility="gone"
+               android:gravity="center"
+               android:layout_weight="0.5"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <ImageView
+                   android:layout_gravity="center"
+                   android:id="@+id/row_wall_entries_like_button"
+                   android:src="@mipmap/action_like_empty"
+                   android:layout_width="30dp"
+                   android:layout_height="30dp" />
+               <TextView
+                   android:layout_gravity="center"
+                   android:text="Beğen"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+           </LinearLayout>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:id="@+id/row_wall_entries_comment_button"
+                        android:src="@mipmap/action_comment"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp" />
+                    <TextView
+                        android:layout_gravity="center"
+                        android:text="Yorumlar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
 
 

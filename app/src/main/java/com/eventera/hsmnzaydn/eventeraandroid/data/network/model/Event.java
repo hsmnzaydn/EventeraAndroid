@@ -16,6 +16,9 @@ public class Event {
     @SerializedName("__v")
     private int V;
     @Expose
+    @SerializedName("wallEntryList")
+    private List<WallEntry> wallentrylist;
+    @Expose
     @SerializedName("eventLocation")
     private String eventlocation;
     @Expose
@@ -33,9 +36,6 @@ public class Event {
     @Expose
     @SerializedName("_id")
     private String Id;
-    @Expose
-    @SerializedName("wallEntryList")
-    private List<WallEntry> wallentrylist;
 
     public int getV() {
         return V;
@@ -43,6 +43,14 @@ public class Event {
 
     public void setV(int V) {
         this.V = V;
+    }
+
+    public List<WallEntry> getWallentrylist() {
+        return wallentrylist;
+    }
+
+    public void setWallentrylist(List<WallEntry> wallentrylist) {
+        this.wallentrylist = wallentrylist;
     }
 
     public String getEventlocation() {
@@ -91,39 +99,6 @@ public class Event {
 
     public void setId(String Id) {
         this.Id = Id;
-    }
-
-    public List<WallEntry> getWallentrylist() {
-        return wallentrylist;
-    }
-
-    public void setWallentrylist(List<WallEntry> wallentrylist) {
-        this.wallentrylist = wallentrylist;
-    }
-
-    public static class Interesting {
-        @Expose
-        @SerializedName("name")
-        private String name;
-        @Expose
-        @SerializedName("id")
-        private String ıd;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getId() {
-            return ıd;
-        }
-
-        public void setId(String ıd) {
-            this.ıd = ıd;
-        }
     }
 
 

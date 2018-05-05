@@ -1,6 +1,7 @@
 package com.eventera.hsmnzaydn.eventeraandroid.data.network;
 
 
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Comment;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.CommonResponse;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
@@ -11,6 +12,7 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.EventService;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.RegisterService;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplicationService;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.WallEntryService;
 
 import java.util.List;
 
@@ -26,12 +28,13 @@ public class AppApiHelper implements ApiHelper {
     private StartApplicationService startApplicationService;
     private RegisterService registerService;
     private EventService eventService;
-
+    private WallEntryService wallEntryService;
     @Inject
-    public AppApiHelper(StartApplicationService startApplicationService,RegisterService registerService, EventService eventService) {
+    public AppApiHelper(StartApplicationService startApplicationService,RegisterService registerService, EventService eventService,WallEntryService wallEntryService) {
         this.startApplicationService = startApplicationService;
         this.eventService=eventService;
         this.registerService=registerService;
+        this.wallEntryService=wallEntryService;
     }
 
     @Override
@@ -73,5 +76,20 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public void isAttend(String id, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
         eventService.isAttend(id,commonResponseServiceCallback);
+    }
+
+    @Override
+    public void postComment(String eventId, String wallEntryId, Comment text, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        wallEntryService.postComment(eventId,wallEntryId,text,commonResponseServiceCallback);
+    }
+
+    @Override
+    public void getCommentList(String eventId, String wallEntryId, ServiceCallback<List<Comment>> listServiceCallback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        wallEntryService.getCommentList(eventId,wallEntryId,listServiceCallback,commonResponseServiceCallback);
+    }
+
+    @Override
+    public void like(String eventId, String wallEntryId) {
+        wallEntryService.like(eventId,wallEntryId);
     }
 }

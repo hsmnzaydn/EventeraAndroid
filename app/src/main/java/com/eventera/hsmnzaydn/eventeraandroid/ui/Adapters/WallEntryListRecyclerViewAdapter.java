@@ -1,26 +1,46 @@
-
 package com.eventera.hsmnzaydn.eventeraandroid.ui.Adapters;
 
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.eventera.hsmnzaydn.eventeraandroid.R;
+import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.WallEntry;
+import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
+import com.eventera.hsmnzaydn.eventeraandroid.eventbus.WallEntryEvent;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.CommentListActivity.CommentListActivity;
+import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class WallEntryListRecyclerViewAdapter extends RecyclerView.Adapter<WallEntryListRecyclerViewAdapter.ViewHolder> {
 
+
+
     private List<WallEntry> myItems;
     private ItemListener myListener;
+    private Activity activity;
+    private DataManager dataManager;
 
-    public WallEntryListRecyclerViewAdapter(List<WallEntry> items, ItemListener listener) {
+    public WallEntryListRecyclerViewAdapter(Activity activity, List<WallEntry> items, DataManager dataManager,ItemListener listener) {
         myItems = items;
         myListener = listener;
+        this.activity = activity;
+        this.dataManager=dataManager;
+
+
     }
 
     public void setListener(ItemListener listener) {
@@ -54,22 +74,55 @@ public class WallEntryListRecyclerViewAdapter extends RecyclerView.Adapter<WallE
         private TextView name;
         private TextView wallEntryText;
         private TextView likeCount;
+        private Button comment;
 
+        @BindView(R.id.row_wall_entries_image)
+        ImageView rowWallEntriesImage;
+        @BindView(R.id.row_wall_entries_name_text_view)
+        TextView rowWallEntriesNameTextView;
+        @BindView(R.id.row_wall_entries_content_text_view)
+        TextView rowWallEntriesContentTextView;
+        @BindView(R.id.row_wall_entries_like_count_text_view)
+        TextView rowWallEntriesLikeCountTextView;
+        @BindView(R.id.row_wall_entries_like_button)
+        ImageView rowWallEntriesLikeButton;
+        @BindView(R.id.row_wall_entries_comment_button)
+        ImageView rowWallEntriesCommentButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            name=itemView.findViewById(R.id.row_wall_entries_name_text_view);
-            wallEntryText=itemView.findViewById(R.id.row_wall_entries_content_text_view);
-            likeCount=itemView.findViewById(R.id.row_wall_entries_like_count_text_view);
+            ButterKnife.bind(this, itemView);
+
             // TODO instantiate/assign view members
         }
 
-        public void setData(WallEntry item) {
+        public void setData(final WallEntry item) {
             this.item = item;
-            name.setText(item.getPostedby().getName());
-            wallEntryText.setText(item.getText());
-            likeCount.setText(String.valueOf(item.getLikecount()));
+            rowWallEntriesNameTextView.setText(item.getPostedby().getName());
+            rowWallEntriesLikeCountTextView.setText(String.valueOf(item.getLikecount()));
+            rowWallEntriesContentTextView.setText(item.getText());
+
+            rowWallEntriesCommentButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    EventBus.getDefault().postSticky(new WallEntryEvent(item));
+                    Utils.changeActivity(activity, CommentListActivity.class);
+                }
+            });
+            if(item.getLiked()){
+                rowWallEntriesLikeButton.setImageResource(R.mipmap.action_fill_like);
+            }
+            rowWallEntriesLikeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    rowWallEntriesLikeButton.setImageResource(R.mipmap.action_fill_like);
+
+                    dataManager.like(item.getEventId(),item.getId());
+
+                }
+            });
+
             // TODO set data to view
         }
 
