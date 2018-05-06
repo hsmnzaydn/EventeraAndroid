@@ -101,6 +101,8 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
     <!-- Empty -->
     <string name="empty_event_list">There is no event</string>
     <string name="empty_wall_entry_list">There is no wall entry</string>
+    <string name="add_wall_entry_list">Add wall entry</string>
+
 
 
     <!-- Setting -->
@@ -126,6 +128,8 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
     <string name="add_your_comment">Add your comment</string>
 
     <string name="action_settings">Settings</string>
+    <string name="add_wall_entry_text">You can write hear</string>
+    <string name="comment">Comments</string>
 
 
 </resources>

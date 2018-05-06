@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Postedby {
+public class User {
     @Expose
     @SerializedName("__v")
     private int V;

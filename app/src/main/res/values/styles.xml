@@ -29,12 +29,13 @@
 
 
     <style name="RowCardViewStyle" parent="CardView">
-
+        <item name="android:layout_marginTop">10dp</item>
         <item name="cardCornerRadius">1dp</item>
     </style>
 
 
     <style name="EditText">
+        <item name="android:paddingLeft">4dp</item>
         <item name="android:layout_margin">2dp</item>
         <item name="android:background">@drawable/background_edit_text</item>
         <item name="android:textCursorDrawable">@drawable/edittext_cursor_color</item>
@@ -121,6 +122,13 @@
         <item name="android:textStyle">bold</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="EmptyTextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

@@ -6,6 +6,7 @@ import com.eventera.hsmnzaydn.eventeraandroid.ui.Adapters.WallEntryListRecyclerV
 import com.eventera.hsmnzaydn.eventeraandroid.ui.AddWallEntryActivity.AddWallEntryActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.CommentListActivity.CommentListActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.DialogPopup.PopupFragment;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.ProfileActivity.ProfileActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.WallEntryListActivity.WallEntryListActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.RegisterActivityStepTwo.RegisterActivityStepTwo;
@@ -31,4 +32,5 @@ public interface DaggerComponent {
     void inject(AddWallEntryActivity addWallEntryActivity);
     void inject(CommentListActivity commentListActivity);
     void inject(WallEntryListRecyclerViewAdapter recyclerViewAdapter);
+    void inject(ProfileActivity profileActivity);
 }

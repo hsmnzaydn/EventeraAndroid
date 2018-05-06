@@ -7,8 +7,10 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterResponse;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.User;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.WallEntry;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.EventService;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ProfileService;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.RegisterService;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.StartApplicationService;
@@ -29,12 +31,14 @@ public class AppApiHelper implements ApiHelper {
     private RegisterService registerService;
     private EventService eventService;
     private WallEntryService wallEntryService;
+    private ProfileService profileService;
     @Inject
-    public AppApiHelper(StartApplicationService startApplicationService,RegisterService registerService, EventService eventService,WallEntryService wallEntryService) {
+    public AppApiHelper(StartApplicationService startApplicationService,RegisterService registerService, EventService eventService,WallEntryService wallEntryService,ProfileService profileService) {
         this.startApplicationService = startApplicationService;
         this.eventService=eventService;
         this.registerService=registerService;
         this.wallEntryService=wallEntryService;
+        this.profileService=profileService;
     }
 
     @Override
@@ -91,5 +95,10 @@ public class AppApiHelper implements ApiHelper {
     @Override
     public void like(String eventId, String wallEntryId) {
         wallEntryService.like(eventId,wallEntryId);
+    }
+
+    @Override
+    public void getProfile(String profileId, ServiceCallback<User> registerObjectServiceCallback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        profileService.getProfile(profileId,registerObjectServiceCallback,commonResponseServiceCallback);
     }
 }

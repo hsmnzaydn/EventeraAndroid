@@ -12,9 +12,10 @@ import android.widget.TextView;
 import com.eventera.hsmnzaydn.eventeraandroid.R;
 import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.WallEntry;
-import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
+import com.eventera.hsmnzaydn.eventeraandroid.eventbus.ProfileEvents;
 import com.eventera.hsmnzaydn.eventeraandroid.eventbus.WallEntryEvent;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.CommentListActivity.CommentListActivity;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.ProfileActivity.ProfileActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -99,7 +100,7 @@ public class WallEntryListRecyclerViewAdapter extends RecyclerView.Adapter<WallE
 
         public void setData(final WallEntry item) {
             this.item = item;
-            rowWallEntriesNameTextView.setText(item.getPostedby().getName());
+            rowWallEntriesNameTextView.setText(item.getUser().getName());
             rowWallEntriesLikeCountTextView.setText(String.valueOf(item.getLikecount()));
             rowWallEntriesContentTextView.setText(item.getText());
 
@@ -120,6 +121,14 @@ public class WallEntryListRecyclerViewAdapter extends RecyclerView.Adapter<WallE
 
                     dataManager.like(item.getEventId(),item.getId());
 
+                }
+            });
+
+            rowWallEntriesImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    EventBus.getDefault().postSticky(new ProfileEvents(item.getUser()));
+                    Utils.changeActivity(activity, ProfileActivity.class);
                 }
             });
 

@@ -8,6 +8,7 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
 
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterResponse;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.User;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.WallEntry;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
 import com.eventera.hsmnzaydn.eventeraandroid.data.pref.PrefHelper;
@@ -104,5 +105,10 @@ public class AppDataManager implements DataManager {
     @Override
     public void like(String eventId, String wallEntryId) {
         apiHelper.like(eventId,wallEntryId);
+    }
+
+    @Override
+    public void getProfile(String profileId, ServiceCallback<User> registerObjectServiceCallback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        apiHelper.getProfile(profileId,registerObjectServiceCallback,commonResponseServiceCallback);
     }
 }

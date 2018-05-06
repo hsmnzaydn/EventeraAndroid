@@ -12,7 +12,7 @@ public  class Comment {
     private String text;
     @Expose
     @SerializedName("postedBy")
-    private Postedby postedby;
+    private User user;
 
     public String getText() {
         return text;
@@ -22,11 +22,11 @@ public  class Comment {
         this.text = text;
     }
 
-    public Postedby getPostedby() {
-        return postedby;
+    public User getUser() {
+        return user;
     }
 
-    public void setPostedby(Postedby postedby) {
-        this.postedby = postedby;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -6,9 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivity">
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:id="@+id/activity_main_swipe_refresh"
+        android:layout_height="wrap_content">
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/activity_main_recylerview"></android.support.v7.widget.RecyclerView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.constraint.ConstraintLayout>

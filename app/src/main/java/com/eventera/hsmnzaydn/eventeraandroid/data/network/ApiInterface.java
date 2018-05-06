@@ -7,6 +7,7 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterResponse;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.User;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.WallEntry;
 
 import java.util.List;
@@ -53,5 +54,9 @@ public interface ApiInterface {
 
     @GET("secure/events/{eventId}/wallEntry/{wallEntryId}/like")
     Observable<CommonResponse> likeToWallEntry(@Path("eventId") String eventId,@Path("wallEntryId") String wallEntryId);
+
+
+    @GET("secure/profile/{profileId}")
+    Observable<User> getProfile(@Path("profileId") String profileId);
 
 }

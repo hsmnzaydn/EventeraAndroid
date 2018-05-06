@@ -24,8 +24,10 @@
         <activity android:name=".ui.MainActivity.MainActivity" />
         <activity android:name=".ui.WallEntryListActivity.WallEntryListActivity" />
         <activity android:name=".ui.AddWallEntryActivity.AddWallEntryActivity" />
-        <activity android:name=".ui.CommentListActivity.CommentListActivity"
-            android:label="@string/title_comment"></activity>
+        <activity
+            android:name=".ui.CommentListActivity.CommentListActivity"
+            android:label="@string/title_comment" />
+        <activity android:name=".ui.ProfileActivity.ProfileActivity"></activity>
     </application>
 
 </manifest>

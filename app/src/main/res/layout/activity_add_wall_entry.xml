@@ -8,6 +8,7 @@
 
 
     <EditText
+        android:hint="@string/add_wall_entry_text"
         android:id="@+id/activity_add_wall_entry_edit_text"
         style="@style/WriteEditText"
         android:layout_width="match_parent"
