@@ -1,5 +1,6 @@
 package com.eventera.hsmnzaydn.eventeraandroid.eventbus;
 
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.User;
 
 /**
@@ -13,6 +14,9 @@ public class ProfileEvents {
     public ProfileEvents(User user) {
         this.user = user;
     }
+
+
+
 
     public User getUser() {
         return user;

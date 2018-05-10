@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context="com.eventera.hsmnzaydn.eventeraandroid.ui.ProfileActivity.ProfileActivity">
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -58,7 +62,7 @@
             <TextView
                 android:gravity="left|center"
                 style="@style/TitleSmall"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -74,12 +78,13 @@
                 app:layout_constraintVertical_bias="0.336" />
 
              <ImageView
+                 android:visibility="gone"
                  android:id="@+id/activity_profile_add_interesting_image_view"
                  android:tint="@color/black"
                  android:layout_gravity="right|center"
                  android:src="@mipmap/ic_plus"
-                 android:layout_width="20dp"
-                 android:layout_height="20dp" />
+                 android:layout_width="30dp"
+                 android:layout_height="30dp" />
             </FrameLayout>
             <View
                 android:layout_marginBottom="8dp"
@@ -104,7 +109,7 @@
             <TextView
 
                 style="@style/TitleSmall"
-                android:textSize="20sp"
+                android:textSize="17sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -129,12 +134,13 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="67dp" />
-            <android.support.v7.widget.RecyclerView
+            <com.eventera.hsmnzaydn.eventeraandroid.ui.CustomComponent.MyListView
                 android:id="@+id/activity_profile_almost_listview"
                android:layout_width="match_parent"
-                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+                android:layout_height="wrap_content"></com.eventera.hsmnzaydn.eventeraandroid.ui.CustomComponent.MyListView>
+
         </LinearLayout>
 
     </ScrollView>
-
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
