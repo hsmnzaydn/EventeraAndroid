@@ -29,8 +29,8 @@
 
 
     <style name="RowCardViewStyle" parent="CardView">
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="cardCornerRadius">1dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="cardCornerRadius">2dp</item>
     </style>
 
 

@@ -11,4 +11,6 @@ import com.eventera.hsmnzaydn.eventeraandroid.ui.base.MvpView;
 public interface ProfileActivityMvpView extends MvpView{
 
     void loadProfileInformation(User registerObject);
+    void openWallEntryListActivity();
+    void openPopup();
 }

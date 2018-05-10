@@ -61,4 +61,34 @@ public class ProfileServiceImp implements ProfileService {
             }
         });
     }
+
+    @Override
+    public void updateProfile(String profileId, RegisterObject user, final ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        apiService.updateProfile(profileId,user).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .onErrorResumeNext(new Func1<Throwable, Observable<? extends CommonResponse>>() {
+                    @Override
+                    public Observable<? extends CommonResponse> call(Throwable throwable) {
+                        return null;
+                    }
+                }).subscribe(new Subscriber<CommonResponse>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+                new NetworkError(e).response(commonResponseServiceCallback);
+
+            }
+
+            @Override
+            public void onNext(CommonResponse commonResponse) {
+                commonResponseServiceCallback.onResponse(commonResponse);
+
+            }
+        });
+    }
 }

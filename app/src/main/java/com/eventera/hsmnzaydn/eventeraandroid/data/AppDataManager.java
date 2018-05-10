@@ -111,4 +111,9 @@ public class AppDataManager implements DataManager {
     public void getProfile(String profileId, ServiceCallback<User> registerObjectServiceCallback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
         apiHelper.getProfile(profileId,registerObjectServiceCallback,commonResponseServiceCallback);
     }
+
+    @Override
+    public void updateProfile(String profileId, RegisterObject user, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        apiHelper.updateProfile(profileId,user,commonResponseServiceCallback);
+    }
 }

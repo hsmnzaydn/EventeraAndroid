@@ -11,8 +11,12 @@ import com.eventera.hsmnzaydn.eventeraandroid.R;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 public class EventListRecyclerviewAdapter extends RecyclerView.Adapter<EventListRecyclerviewAdapter.ViewHolder> {
@@ -54,8 +58,8 @@ public class EventListRecyclerviewAdapter extends RecyclerView.Adapter<EventList
         // TODO - Your view members
         public Event item;
          TextView title;
-         TextView time;
          TextView category;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -68,7 +72,6 @@ public class EventListRecyclerviewAdapter extends RecyclerView.Adapter<EventList
         public void setData(Event item) {
             this.item = item;
             title.setText(item.getEventname());
-           // time.setText(Utils.longToddMMyyyy(Long.parseLong(item.getEventendtime())));
             category.setText(item.getEventcategoryname());
             // TODO set data to view
         }
@@ -89,5 +92,13 @@ public class EventListRecyclerviewAdapter extends RecyclerView.Adapter<EventList
     }
 
 
+    private static long parseDate(String text)
+            throws ParseException
+    {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a MM/dd/yyyy",
+                Locale.getDefault());
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return dateFormat.parse(text).getTime();
+    }
 }
                                 

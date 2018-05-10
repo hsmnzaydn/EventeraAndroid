@@ -11,4 +11,5 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.User;
 public interface ProfileService {
 
     void getProfile(String profileId, ServiceCallback<User> registerObjectServiceCallback, ServiceCallback<CommonResponse> commonResponseServiceCallback);
+    void updateProfile(String profileId, RegisterObject user, ServiceCallback<CommonResponse> commonResponseServiceCallback);
 }

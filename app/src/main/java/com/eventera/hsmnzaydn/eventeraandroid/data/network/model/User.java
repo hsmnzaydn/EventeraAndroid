@@ -35,7 +35,7 @@ public class User {
     private List<Event> attendes;
     @Expose
     @SerializedName("interesting")
-    private List<Interesting> ınteresting;
+    private List<Interesting> interests;
 
     public int getV() {
         return V;
@@ -110,10 +110,10 @@ public class User {
     }
 
     public List<Interesting> getInteresting() {
-        return ınteresting;
+        return interests;
     }
 
     public void setInteresting(List<Interesting> ınteresting) {
-        this.ınteresting = ınteresting;
+        this.interests = ınteresting;
     }
 }

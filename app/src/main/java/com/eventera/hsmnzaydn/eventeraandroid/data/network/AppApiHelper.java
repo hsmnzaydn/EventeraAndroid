@@ -101,4 +101,9 @@ public class AppApiHelper implements ApiHelper {
     public void getProfile(String profileId, ServiceCallback<User> registerObjectServiceCallback, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
         profileService.getProfile(profileId,registerObjectServiceCallback,commonResponseServiceCallback);
     }
+
+    @Override
+    public void updateProfile(String profileId, RegisterObject user, ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+        profileService.updateProfile(profileId,user,commonResponseServiceCallback);
+    }
 }

@@ -1,5 +1,6 @@
 package com.eventera.hsmnzaydn.eventeraandroid.ui.ProfileActivity;
 
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.MainActivity.MainActivityMvpView;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.MvpPresenter;
 
@@ -11,4 +12,5 @@ public interface ProfileActivityMvpPresenter <V extends ProfileActivityMvpView> 
 
 
     void  getProfileInformation(String profileId);
+    void attend(Event item);
 }

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +18,12 @@ import android.widget.TextView;
 import com.eventera.hsmnzaydn.eventeraandroid.R;
 import com.eventera.hsmnzaydn.eventeraandroid.data.DataManager;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Event;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.Interesting;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
+import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.User;
 import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
 import com.eventera.hsmnzaydn.eventeraandroid.eventbus.EventShare;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.Adapters.CategoryListRecyclerViewAdapter;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.WallEntryListActivity.WallEntryListActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.BaseDialog;
 import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
@@ -25,6 +31,8 @@ import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -38,6 +46,15 @@ import butterknife.OnClick;
  */
 
 public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
+
+    @BindView(R.id.dialog_type_five_recyclerview)
+    RecyclerView dialogTypeFiveRecyclerview;
+    @BindView(R.id.dialog_type_five_cancel_button)
+    Button dialogTypeFiveCancelButton;
+    @BindView(R.id.dialog_type_five_send_button)
+    Button dialogTypeFiveSendButton;
+    @BindView(R.id.dialog_type_five)
+    LinearLayout dialogTypeFive;
 
     private View root;
 
@@ -63,12 +80,15 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
          - FUNCTION 1= SHOW A POPUP WHEN CLICK SHOW IT'LL OPEN NOTIFICATION FRAGMENT
                                     WHEN CLICK CANCEL IT'LL CLOSE POPUP
 
-
+        TYPE=5;
+         - FUNCTION 1= SHOW A POPUP AND 1 RECYLERVİEW WHEN CLICK OK UPDATE
+                                                      WHEN CLICK CANCEL DISMISS
      */
 
     private int dialogType;
     private int dialogFunction;
 
+    private CategoryListRecyclerViewAdapter categoryListRecyclerViewAdapter;
     //DİALOG TYPE ONE IT SHOW ONLY INFORMATION
     @BindView(R.id.dialog_type_one)
     LinearLayout dialogTypeOne;
@@ -135,6 +155,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
 
     @Inject
     DataManager dataManager;
+
     public static PopupFragment newInstance() {
         PopupFragment fragment = new PopupFragment();
         Bundle bundle = new Bundle();
@@ -152,7 +173,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
         EventBus.getDefault().register(this);
         ((DaggerApplication) getActivity().getApplication()).getDaggerComponent().inject(this);
 
-        dialogFragmentPresenter = new PopupFragmentPresenter(getActivity(),dataManager);
+        dialogFragmentPresenter = new PopupFragmentPresenter(getActivity(), dataManager);
         dialogFragmentPresenter.onAttach(this);
 
         if (dialogType == 1 && dialogFunction == 1) {
@@ -196,6 +217,10 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
             dialogTypeFourDetailTextView.setText(event.getEventdescription());
         }
 
+        if (dialogType == 5 && dialogFunction == 1) {
+            dialogTypeFive.setVisibility(View.VISIBLE);
+            dialogFragmentPresenter.getInterestingList();
+        }
 
         return root;
 
@@ -284,7 +309,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
     public void onResume() {
         super.onResume();
 
-        if(dialogType ==3 && dialogFunction==1) {
+        if (dialogType == 3 && dialogFunction == 1) {
             dialogTypeThreeEditText.post(new Runnable() {
                 @Override
                 public void run() {
@@ -314,6 +339,7 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
                 dialogFragmentPresenter.attendToEvent(event.getId());
                 dismiss();
                 break;
+
         }
     }
 
@@ -326,11 +352,33 @@ public class PopupFragment extends BaseDialog implements PopupFragmentMvpView {
     }
 
 
-
     @Override
     public void openEventListActivity() {
         Utils.changeActivity(getActivity(), WallEntryListActivity.class);
     }
 
+    @Override
+    public void loadDataToList(List<Interesting> lisOfInteresting) {
+        categoryListRecyclerViewAdapter = new CategoryListRecyclerViewAdapter(lisOfInteresting);
+        dialogTypeFiveRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        dialogTypeFiveRecyclerview.setAdapter(categoryListRecyclerViewAdapter);
+    }
 
+    @Override
+    public void dismissPopup() {
+        dismiss();
+    }
+
+
+    @OnClick({R.id.dialog_type_five_cancel_button, R.id.dialog_type_five_send_button})
+    public void dialogTypeFiveButtonClick(View view) {
+        switch (view.getId()) {
+            case R.id.dialog_type_five_send_button:
+                RegisterObject user = new RegisterObject();
+                user.setInterests(categoryListRecyclerViewAdapter.getSelectedItems());
+                dialogFragmentPresenter.updateIntestingList(dataManager.getAuthorization(), user);
+            case R.id.dialog_type_five_cancel_button:
+                dismiss();
+        }
+    }
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.eventera.hsmnzaydn.eventeraandroid.R;
@@ -29,17 +30,16 @@ import butterknife.ButterKnife;
 public class WallEntryListRecyclerViewAdapter extends RecyclerView.Adapter<WallEntryListRecyclerViewAdapter.ViewHolder> {
 
 
-
     private List<WallEntry> myItems;
     private ItemListener myListener;
     private Activity activity;
     private DataManager dataManager;
 
-    public WallEntryListRecyclerViewAdapter(Activity activity, List<WallEntry> items, DataManager dataManager,ItemListener listener) {
+    public WallEntryListRecyclerViewAdapter(Activity activity, List<WallEntry> items, DataManager dataManager, ItemListener listener) {
         myItems = items;
         myListener = listener;
         this.activity = activity;
-        this.dataManager=dataManager;
+        this.dataManager = dataManager;
 
 
     }
@@ -90,6 +90,9 @@ public class WallEntryListRecyclerViewAdapter extends RecyclerView.Adapter<WallE
         @BindView(R.id.row_wall_entries_comment_button)
         ImageView rowWallEntriesCommentButton;
 
+        @BindView(R.id.row_wall_entries_comment_linear_layout)
+        LinearLayout rowWallEntriesCommentLinearLayout;
+
         public ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -104,14 +107,14 @@ public class WallEntryListRecyclerViewAdapter extends RecyclerView.Adapter<WallE
             rowWallEntriesLikeCountTextView.setText(String.valueOf(item.getLikecount()));
             rowWallEntriesContentTextView.setText(item.getText());
 
-            rowWallEntriesCommentButton.setOnClickListener(new View.OnClickListener() {
+            rowWallEntriesCommentLinearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     EventBus.getDefault().postSticky(new WallEntryEvent(item));
                     Utils.changeActivity(activity, CommentListActivity.class);
                 }
             });
-            if(item.getLiked()){
+            if (item.getLiked()) {
                 rowWallEntriesLikeButton.setImageResource(R.mipmap.action_fill_like);
             }
             rowWallEntriesLikeButton.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +122,7 @@ public class WallEntryListRecyclerViewAdapter extends RecyclerView.Adapter<WallE
                 public void onClick(View view) {
                     rowWallEntriesLikeButton.setImageResource(R.mipmap.action_fill_like);
 
-                    dataManager.like(item.getEventId(),item.getId());
+                    dataManager.like(item.getEventId(), item.getId());
 
                 }
             });

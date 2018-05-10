@@ -59,4 +59,8 @@ public interface ApiInterface {
     @GET("secure/profile/{profileId}")
     Observable<User> getProfile(@Path("profileId") String profileId);
 
+
+    @POST("secure/profile/{profileId}/update")
+    Observable<CommonResponse> updateProfile(@Path("profileId") String profileId,@Body RegisterObject user );
+
 }
