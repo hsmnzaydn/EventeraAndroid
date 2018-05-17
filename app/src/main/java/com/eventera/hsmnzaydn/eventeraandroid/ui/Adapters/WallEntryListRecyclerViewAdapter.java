@@ -92,6 +92,8 @@ public class WallEntryListRecyclerViewAdapter extends RecyclerView.Adapter<WallE
 
         @BindView(R.id.row_wall_entries_comment_linear_layout)
         LinearLayout rowWallEntriesCommentLinearLayout;
+        @BindView(R.id.row_wall_entries_like_linear_layout)
+        LinearLayout rowWallEntriesLikeLinearLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -114,18 +116,35 @@ public class WallEntryListRecyclerViewAdapter extends RecyclerView.Adapter<WallE
                     Utils.changeActivity(activity, CommentListActivity.class);
                 }
             });
-            if (item.getLiked()) {
-                rowWallEntriesLikeButton.setImageResource(R.mipmap.action_fill_like);
-            }
-            rowWallEntriesLikeButton.setOnClickListener(new View.OnClickListener() {
+                if (item.getLiked()) {
+                    rowWallEntriesLikeButton.setImageResource(R.mipmap.action_fill_like);
+                }
+            rowWallEntriesLikeLinearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    rowWallEntriesLikeButton.setImageResource(R.mipmap.action_fill_like);
+                    if (item.getLiked()) {
+                        myItems.get(getAdapterPosition()).setLiked(false);
+                        item.setLikecount(item.getLikecount()-1);
+                        rowWallEntriesLikeCountTextView.setText(String.valueOf(item.getLikecount()));
+                        rowWallEntriesLikeButton.setImageResource(R.mipmap.action_like_empty);
 
+                    }
+                    else {
+                        myItems.get(getAdapterPosition()).setLiked(true);
+                        item.setLikecount(item.getLikecount()+1);
+                        rowWallEntriesLikeCountTextView.setText(String.valueOf(item.getLikecount()));
+                        rowWallEntriesLikeButton.setImageResource(R.mipmap.action_fill_like);
+
+                    }
                     dataManager.like(item.getEventId(), item.getId());
+                    setIsRecyclable(true);
 
                 }
             });
+
+
+
+
 
             rowWallEntriesImage.setOnClickListener(new View.OnClickListener() {
                 @Override

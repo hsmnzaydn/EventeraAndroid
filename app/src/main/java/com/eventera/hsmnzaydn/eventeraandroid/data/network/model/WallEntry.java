@@ -25,6 +25,9 @@ public class WallEntry {
     @SerializedName("text")
     private String text;
     @Expose
+    @SerializedName("liked")
+    private Boolean liked;
+    @Expose
     @SerializedName("postedBy")
     private User user;
 
@@ -36,10 +39,7 @@ public class WallEntry {
         this.liked = liked;
     }
 
-    @Expose
-    @SerializedName("liked")
 
-    private Boolean liked;
 
     @Expose
     @SerializedName("eventId")

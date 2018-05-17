@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="140dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     >
 
     <android.support.v7.widget.CardView
         style="@style/RowCardViewStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,7 +63,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_marginLeft="5dp"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
                     android:layout_height="20dp" />
             <TextView
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="3dp"
                 android:textStyle="bold"
                 android:id="@+id/row_wall_entries_like_count_text_view"
                 android:layout_width="wrap_content"
@@ -89,20 +89,22 @@
                 android:background="@color/grey"
                 />
             <LinearLayout
-                android:layout_marginTop="5dp"
+
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
            <LinearLayout
-               android:visibility="gone"
+               android:id="@+id/row_wall_entries_like_linear_layout"
+               android:layout_gravity="center"
                android:gravity="center"
                android:layout_weight="0.5"
                android:layout_width="match_parent"
                android:layout_height="wrap_content">
 
                <ImageView
+
                    android:layout_gravity="center"
                    android:id="@+id/row_wall_entries_like_button"
                    android:src="@mipmap/action_like_empty"
@@ -116,6 +118,7 @@
            </LinearLayout>
 
                 <LinearLayout
+
                     android:id="@+id/row_wall_entries_comment_linear_layout"
                     android:gravity="center"
                     android:layout_gravity="center"
@@ -124,6 +127,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
+
                         android:layout_gravity="center"
                         android:id="@+id/row_wall_entries_comment_button"
                         android:src="@mipmap/action_comment"
