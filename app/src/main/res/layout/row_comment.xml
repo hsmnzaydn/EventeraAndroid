@@ -29,7 +29,6 @@
 
                 <TextView
                     android:layout_marginLeft="5dp"
-                    android:text="Serkan Özaydin"
                     android:layout_gravity="center"
                     android:id="@+id/row_comment_name_text_view"
                     style="@style/TitleSmall"

@@ -27,7 +27,8 @@
         <activity
             android:name=".ui.CommentListActivity.CommentListActivity"
             android:label="@string/title_comment" />
-        <activity android:name=".ui.ProfileActivity.ProfileActivity"></activity>
+        <activity android:name=".ui.ProfileActivity.ProfileActivity" />
+        <activity android:name=".ui.AttendEventActivity.AttendEventActivity"></activity>
     </application>
 
 </manifest>

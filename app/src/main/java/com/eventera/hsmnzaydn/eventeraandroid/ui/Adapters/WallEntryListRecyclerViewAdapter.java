@@ -116,9 +116,12 @@ public class WallEntryListRecyclerViewAdapter extends RecyclerView.Adapter<WallE
                     Utils.changeActivity(activity, CommentListActivity.class);
                 }
             });
+
+            if(item.getLiked() != null) {
                 if (item.getLiked()) {
                     rowWallEntriesLikeButton.setImageResource(R.mipmap.action_fill_like);
                 }
+            }
             rowWallEntriesLikeLinearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

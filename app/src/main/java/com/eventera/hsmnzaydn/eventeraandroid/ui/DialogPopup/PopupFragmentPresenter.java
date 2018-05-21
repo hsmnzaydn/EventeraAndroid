@@ -10,8 +10,10 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.RegisterObject;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.model.User;
 import com.eventera.hsmnzaydn.eventeraandroid.data.network.service.ServiceCallback;
 import com.eventera.hsmnzaydn.eventeraandroid.eventbus.ProfileEvents;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.WallEntryListActivity.WallEntryListActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.BasePresenter;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.base.DialogMvpView;
+import com.eventera.hsmnzaydn.eventeraandroid.utility.Utils;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -42,14 +44,17 @@ public class PopupFragmentPresenter<V extends PopupFragmentMvpView> extends Base
                 @Override
                 public void onResponse(CommonResponse response) {
 
-                    getMvpView().dissmisLoading();
-                    getMvpView().openEventListActivity();
+                   getMvpView().dissmisLoading();
+                   getMvpView().openEventListActivity();
+
+
                 }
 
                 @Override
                 public void onError(String message) {
-                    getMvpView().showError(message);
+                   getMvpView().showError(message);
                     getMvpView().dissmisLoading();
+
                 }
             });
 

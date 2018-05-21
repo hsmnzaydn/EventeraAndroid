@@ -64,6 +64,9 @@ public class EventServiceImp implements EventService{
 
     @Override
     public void attendToEvent(String id, final ServiceCallback<CommonResponse> commonResponseServiceCallback) {
+
+
+
         apiService.attendToEvent(id).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .onErrorResumeNext(new Func1<Throwable, Observable<? extends CommonResponse>>() {
@@ -80,7 +83,7 @@ public class EventServiceImp implements EventService{
             @Override
             public void onError(Throwable e) {
 
-                new NetworkError(e).response(commonResponseServiceCallback);
+             //  new NetworkError(e).response(commonResponseServiceCallback);
 
             }
 

@@ -72,7 +72,7 @@ public class CommentListRecyclerViewAdapter extends RecyclerView.Adapter<Comment
 
         public void setData(Comment item) {
             this.item = item;
-            rowCommentContentTextView.setText(item.getUser().getName());
+            rowCommentNameTextView.setText(item.getUser().getName().toString());
             rowCommentContentTextView.setText(item.getText());
         }
 

@@ -16,6 +16,7 @@ import com.eventera.hsmnzaydn.eventeraandroid.di.DaggerApplication;
 import com.eventera.hsmnzaydn.eventeraandroid.eventbus.EventShare;
 import com.eventera.hsmnzaydn.eventeraandroid.eventbus.ProfileEvents;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.Adapters.EventListRecyclerviewAdapter;
+import com.eventera.hsmnzaydn.eventeraandroid.ui.AttendEventActivity.AttendEventActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.DialogPopup.PopupFragment;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.ProfileActivity.ProfileActivity;
 import com.eventera.hsmnzaydn.eventeraandroid.ui.WallEntryListActivity.WallEntryListActivity;
@@ -108,8 +109,8 @@ public class MainActivity extends BaseActivity implements MainActivityMvpView, S
 
     @Override
     public void openPopup() {
-        PopupFragment.newInstance().show(getSupportFragmentManager(), 4, 1);
-
+        //PopupFragment.newInstance().show(getSupportFragmentManager(), 4, 1);
+        Utils.changeActivity(this, AttendEventActivity.class);
     }
 
     @Override

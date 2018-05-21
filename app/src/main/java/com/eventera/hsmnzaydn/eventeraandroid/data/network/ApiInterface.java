@@ -34,7 +34,7 @@ public interface ApiInterface {
     Observable<List<Event>> listOfEvent();
 
     @GET("secure/events/{id}")
-    Observable<CommonResponse> attendToEvent(@Path("id" ) String id );
+    Observable<CommonResponse> attendToEvent(@Path("id" ) String id);
 
     @GET("secure/events/{id}/wallEntries")
     Observable<List<WallEntry>> getWallEntries(@Path("id") String id);

@@ -104,7 +104,6 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
     <string name="add_wall_entry_list">Add wall entry</string>
 
 
-
     <!-- Setting -->
     <string name="setting_language">Language</string>
     <string name="setting_logout">Logout</string>
@@ -128,7 +127,7 @@ Valid for 48 hours after stamping, gives you unrestricted travels for all the Mi
     <string name="add_your_comment">Add your comment</string>
 
     <string name="action_settings">Settings</string>
-    <string name="add_wall_entry_text">You can write hear</string>
+    <string name="add_wall_entry_text">You can write here</string>
     <string name="comment">Comments</string>
 
 

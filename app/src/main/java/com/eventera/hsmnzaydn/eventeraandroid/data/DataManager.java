@@ -8,4 +8,6 @@ import com.eventera.hsmnzaydn.eventeraandroid.data.pref.PrefHelper;
  */
 
 public interface DataManager extends ApiHelper,PrefHelper{
+
+
 }
